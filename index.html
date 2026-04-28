@@ -84,7 +84,7 @@ nav.scrolled{background:#FAF9F6;box-shadow:0 2px 24px rgba(27,45,58,.08)}
 .hero h1{margin-bottom:24px;font-size:clamp(2.8rem,6vw,4.2rem)}.hero h1 em{font-style:italic;color:var(--blue);font-size:1.1em}
 .hero-desc{font-size:1.08rem;color:var(--slate);line-height:1.78;max-width:min(480px,100%);margin-bottom:36px;font-weight:300}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
-.hero-trust{display:flex;gap:28px;flex-wrap:wrap}
+.hero-trust{display:none;gap:28px;flex-wrap:wrap}
 .hero-trust-item{display:flex;align-items:center;gap:8px;font-size:1rem;color:var(--slate);font-weight:600}
 .hero-trust-item svg{color:var(--teal);width:16px;height:16px}
 
@@ -205,7 +205,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
 @media(max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:48px;text-align:center}
   .hero-desc,.hero-actions{margin-left:auto;margin-right:auto}
-  .hero-actions{justify-content:center}.hero-trust{justify-content:center}
+  .hero-actions{justify-content:center}
   .hero-mosaic{max-width:520px;margin:0 auto}
   .steps{grid-template-columns:repeat(2,1fr)}
   .service-grid{grid-template-columns:repeat(2,1fr)}
@@ -224,18 +224,17 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
   .footer-cols{grid-template-columns:1fr}.footer-logo-wrap{flex-direction:column;align-items:flex-start;gap:12px}
   .footer-bottom{flex-direction:column;text-align:center;align-items:center}
   .footer-bottom div{justify-content:center!important}
-  .hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px);padding-bottom:40px;align-items:flex-start}
+  .hero{min-height:auto;padding-top:calc(var(--nav-h) + 16px);padding-bottom:40px;align-items:flex-start}
   .hero-grid{grid-template-columns:1fr;gap:0;text-align:left}
   .hero-mosaic{display:none}
   .hero-mobile-img{display:block}
-  .hero-social-proof{display:inline-flex}
-  .hero-actions{justify-content:flex-start}
-  .hero-trust{justify-content:flex-start;gap:16px}
-  .hero h1{font-size:3rem;line-height:1.15;margin-bottom:20px}
-  .hero-desc{font-size:1rem;line-height:1.9;margin-bottom:24px}
-  .hero-badge{margin-bottom:16px}
-  .hero-actions .btn{padding:12px 22px;font-size:.88rem}
-  .hero-actions{gap:10px;margin-bottom:28px}
+  .hero-actions{justify-content:flex-start;flex-wrap:nowrap;gap:10px;margin-bottom:20px}
+  .hero-actions .btn{flex:1;justify-content:center;padding:13px 16px;font-size:.86rem}
+  .hero-trust{display:flex;justify-content:flex-start;gap:12px;flex-direction:column;margin-bottom:20px}
+  .hero-trust-item{font-size:.95rem}
+  .hero h1{font-size:2.9rem;line-height:1.12;margin-bottom:14px}
+  .hero-desc{font-size:.97rem;line-height:1.75;margin-bottom:20px;color:var(--charcoal)}
+  .hero-badge{margin-bottom:14px;font-size:.75rem}
 }
 @media(max-width:480px){
   .hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}
@@ -296,11 +295,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
           </a>
           <a href="tel:+51974726537" class="btn btn-outline">+51 974 726 537</a>
         </div>
-        <!-- MOBILE HERO IMAGE — hidden on desktop -->
-        <div class="hero-mobile-img">
-          <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80" alt="Ropa impecable Aquapress San Isidro" loading="lazy" />
-        </div>
-
+        <!-- MOBILE: checklist BEFORE image for better flow -->
         <div class="hero-trust">
           <div class="hero-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -314,6 +309,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Sin mínimo de prendas
           </div>
+        </div>
+        <!-- MOBILE HERO IMAGE — hidden on desktop -->
+        <div class="hero-mobile-img">
+          <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80" alt="Ropa impecable Aquapress San Isidro" loading="lazy" />
         </div>
       </div>
 
