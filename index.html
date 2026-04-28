@@ -81,11 +81,11 @@ nav.scrolled{background:#FAF9F6;box-shadow:0 2px 24px rgba(27,45,58,.08)}
 .hero-content{position:relative;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);color:var(--slate);font-size:.78rem;font-weight:600;padding:6px 16px;border-radius:999px;margin-bottom:28px;letter-spacing:.04em}
 .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block}
-.hero h1{margin-bottom:24px}.hero h1 em{font-style:italic;color:var(--blue)}
+.hero h1{margin-bottom:24px;font-size:clamp(2.8rem,6vw,4.2rem)}.hero h1 em{font-style:italic;color:var(--blue);font-size:1.1em}
 .hero-desc{font-size:1.08rem;color:var(--slate);line-height:1.78;max-width:min(480px,100%);margin-bottom:36px;font-weight:300}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
 .hero-trust{display:flex;gap:28px;flex-wrap:wrap}
-.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--slate);font-weight:600}
+.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:1rem;color:var(--slate);font-weight:600}
 .hero-trust-item svg{color:var(--teal);width:16px;height:16px}
 
 /* HERO VISUAL */
@@ -101,6 +101,7 @@ nav.scrolled{background:#FAF9F6;box-shadow:0 2px 24px rgba(27,45,58,.08)}
 
 /* WAVE */
 .wave-divider{width:100%;overflow:hidden;line-height:0}.wave-divider svg{display:block;width:100%;height:auto}
+@media(max-width:768px){.wave-divider svg{height:30px}}
 
 /* PHOTO GRID SECTION */
 .photo-section{background:var(--white);padding:72px 0}
@@ -214,21 +215,27 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
 }
 @media(max-width:768px){
   .service-grid{grid-template-columns:1fr}
-  .section{padding:72px 0}
+  .section{padding:56px 0}
   .steps{grid-template-columns:1fr 1fr;gap:16px}
   .service-grid,.why-grid,.review-grid,.steps{grid-template-columns:1fr}
   .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,160px)}
+  .photo-section{padding:48px 0}
   .nav-links,.nav-cta{display:none}.hamburger{display:block}
   .footer-cols{grid-template-columns:1fr}.footer-logo-wrap{flex-direction:column;align-items:flex-start;gap:12px}
   .footer-bottom{flex-direction:column;text-align:center;align-items:center}
   .footer-bottom div{justify-content:center!important}
-  .hero-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 140px 160px}
+  .hero{min-height:auto;padding-top:calc(var(--nav-h) + 20px);padding-bottom:40px;align-items:flex-start}
+  .hero-grid{grid-template-columns:1fr;gap:0;text-align:left}
   .hero-mosaic{display:none}
   .hero-mobile-img{display:block}
   .hero-social-proof{display:inline-flex}
-  .hero-grid{text-align:left}
   .hero-actions{justify-content:flex-start}
-  .hero-trust{justify-content:flex-start}
+  .hero-trust{justify-content:flex-start;gap:16px}
+  .hero h1{font-size:3rem;line-height:1.15;margin-bottom:20px}
+  .hero-desc{font-size:1rem;line-height:1.9;margin-bottom:24px}
+  .hero-badge{margin-bottom:16px}
+  .hero-actions .btn{padding:12px 22px;font-size:.88rem}
+  .hero-actions{gap:10px;margin-bottom:28px}
 }
 @media(max-width:480px){
   .hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}
@@ -293,14 +300,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 28px}
         <div class="hero-mobile-img">
           <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80" alt="Ropa impecable Aquapress San Isidro" loading="lazy" />
         </div>
-        <!-- SOCIAL PROOF — hidden on desktop -->
-        <div class="hero-social-proof">
-          <span class="sp-stars">★★★★★</span>
-          <span class="sp-sep">·</span>
-          <span>4.8 en Google</span>
-          <span class="sp-sep">·</span>
-          <span>+120 reseñas</span>
-        </div>
+
         <div class="hero-trust">
           <div class="hero-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
