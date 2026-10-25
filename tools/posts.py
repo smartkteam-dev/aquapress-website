@@ -126,8 +126,8 @@ POSTS = [
         'h1': 'Cada cuánto lavar un edredón y cómo hacerlo',
         'desc': 'Descubre cada cuánto lavar un edredón, por qué en casa suele salir mal y cuándo conviene traerlo a Aquapress.',
         'kw': 'cada cuánto lavar un edredón, cómo lavar un edredón, lavar edredón queen, secar edredón, lavandería de edredones',
-        'img': 'edredon-acolchado-cama-cabecero-madera', 'og': 'og-cada-cuanto-lavar-un-edredon',
-        'alt': 'Cama con un edredón acolchado gris claro, cabecero de madera y cortinas blancas',
+        'img': 'edredon-blanco-cojines-beige', 'og': 'og-cada-cuanto-lavar-un-edredon',
+        'alt': 'Cama con edredón blanco, cojines de lino beige y cubrecama acolchado en tonos neutros',
         'section': 'Ropa de cama', 'read': '4',
         'summary': 'Frecuencia recomendada, qué suele salir mal al lavar un edredón en casa y señales de que es mejor traerlo a Aquapress.',
         'body': '''<p>El edredón acumula polvo, sudor y ácaros aunque se vea limpio. Lavarlo bien alarga su vida y mejora el descanso, pero un lavado mal hecho puede dejar humedad, malos olores o un relleno apelmazado. Aquí tienes la frecuencia recomendada y lo que conviene saber antes de lavarlo.</p>
@@ -275,8 +275,8 @@ POSTS = [
         'h1': 'Cómo lavar cortinas sin dañarlas',
         'desc': 'Cómo lavar cortinas según su tela, cada cuánto limpiarlas y cuándo conviene traerlas a Aquapress, tu lavandería en San Isidro.',
         'kw': 'cómo lavar cortinas, lavar cortinas, limpieza de cortinas, cada cuánto lavar cortinas, lavandería de cortinas',
-        'img': 'cortinas-translucidas-luz-natural', 'og': 'og-como-lavar-cortinas',
-        'alt': 'Cortinas translúcidas con luz natural en una habitación',
+        'img': 'cortina-lino-beige-piso-madera', 'og': 'og-como-lavar-cortinas',
+        'alt': 'Cortina de lino beige que cae hasta un piso de madera clara',
         'section': 'Hogar', 'read': '4',
         'summary': 'Qué tener en cuenta antes de lavar cortinas, cada cuánto hacerlo y cuándo es mejor traerlas a Aquapress.',
         'body': '''<p>Las cortinas retienen polvo, humo, olores y humedad del ambiente, aunque no lo notes. Lavarlas bien las deja frescas y alarga su vida, pero hacerlo en casa tiene sus riesgos: pueden encoger, deformarse o quedar húmedas. Esto es lo que debes saber.</p>
