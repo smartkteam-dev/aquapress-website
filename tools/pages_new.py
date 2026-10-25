@@ -69,7 +69,7 @@ def alfombras():
         'Lavado de alfombras y cortinas <em>en San Isidro</em>',
         'Lavamos alfombras y cortinas de casa y oficina. Tráelas a nuestro local de San Isidro o consulta por WhatsApp el recojo a domicilio.',
         'Hogar y decoración',
-        img('cortina-lino-beige-piso-madera', 'Cortina de lino beige que cae hasta un piso de madera clara: lavado de cortinas y alfombras', eager=True),
+        img('cortinas-beige-alfombra-sala', 'Cortinas de lino beige frente a una ventana luminosa en una sala de tonos neutros: lavado de cortinas y alfombras', eager=True),
         'Hola, quisiera información sobre el lavado de alfombras o cortinas',
         secs, faqs,
         'Lavado de alfombras y cortinas', 'Lavado de alfombras y cortinas de hogares y oficinas en San Isidro, Lima, con recojo a domicilio.',

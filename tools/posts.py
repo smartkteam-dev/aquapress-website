@@ -275,8 +275,8 @@ POSTS = [
         'h1': 'Cómo lavar cortinas sin dañarlas',
         'desc': 'Cómo lavar cortinas según su tela, cada cuánto limpiarlas y cuándo conviene traerlas a Aquapress, tu lavandería en San Isidro.',
         'kw': 'cómo lavar cortinas, lavar cortinas, limpieza de cortinas, cada cuánto lavar cortinas, lavandería de cortinas',
-        'img': 'cortina-lino-beige-piso-madera', 'og': 'og-como-lavar-cortinas',
-        'alt': 'Cortina de lino beige que cae hasta un piso de madera clara',
+        'img': 'cortinas-beige-alfombra-sala', 'og': 'og-como-lavar-cortinas',
+        'alt': 'Cortinas de lino beige con tiras en la parte superior frente a una ventana luminosa, en una sala de tonos neutros',
         'section': 'Hogar', 'read': '4',
         'summary': 'Qué tener en cuenta antes de lavar cortinas, cada cuánto hacerlo y cuándo es mejor traerlas a Aquapress.',
         'body': '''<p>Las cortinas retienen polvo, humo, olores y humedad del ambiente, aunque no lo notes. Lavarlas bien las deja frescas y alarga su vida, pero hacerlo en casa tiene sus riesgos: pueden encoger, deformarse o quedar húmedas. Esto es lo que debes saber.</p>

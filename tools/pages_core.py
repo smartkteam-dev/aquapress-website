@@ -486,7 +486,7 @@ def edredones():
         'Lavado de edredones, mantas y alfombras <em>en San Isidro</em>',
         'Lavamos edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras. Visítanos en San Isidro o coordina el recojo a domicilio.',
         'Ropa de cama y hogar',
-        img('lavadora-toallas-ropa-de-hogar', 'Lavadora, toallas y ropa de hogar limpia: lavado de edredones y ropa de cama', eager=True),
+        img('edredon-blanco-cojines-beige', 'Cama con edredón blanco, cojines de lino beige y cubrecama acolchado en tonos neutros: lavado de edredones y ropa de cama', eager=True),
         'Hola, quisiera información sobre el lavado de edredones',
         secs, faqs,
         'Lavado de edredones y ropa de cama', 'Lavado de edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras en San Isidro, Lima.',
