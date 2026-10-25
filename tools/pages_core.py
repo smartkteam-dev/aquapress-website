@@ -541,7 +541,7 @@ def recojo():
         'Lavandería con recojo a domicilio <em>en San Isidro, San Borja, Surquillo y Miraflores</em>',
         'Si no puedes venir, coordinamos el recojo en tu casa u oficina y te devolvemos tus prendas limpias. Consulta disponibilidad por WhatsApp.',
         'Recojo y entrega',
-        img('casacas-puffer-colgadas', 'Casacas acolchadas de colores colgadas en percha, listas para recojo y entrega a domicilio', eager=True),
+        img('ropa-limpia-doblada-entrega-manos', 'Persona sosteniendo una pila de ropa limpia y doblada, lista para la entrega a domicilio', eager=True),
         'Hola, quisiera coordinar un recojo a domicilio',
         secs, faqs,
         'Recojo a domicilio', 'Recojo y entrega a domicilio de ropa para lavandería y tintorería en San Isidro, San Borja, Surquillo y Miraflores.',
