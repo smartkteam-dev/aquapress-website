@@ -71,11 +71,6 @@ ICON_PATHS = {
 def icon_wrap(key):
     return (f'<div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
             f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICON_PATHS[key]}</svg></div>')
-
-
-def art_panel(keys, label):
-    svgs = ''.join(f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICON_PATHS[k]}</svg>' for k in keys)
-    return f'<div class="page-hero-img art" role="img" aria-label="{label}">{svgs}</div>'
 DISTRICTS = [
     ('/', 'San Isidro'),
     ('/lavanderia-san-borja', 'San Borja'),

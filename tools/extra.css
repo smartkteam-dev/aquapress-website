@@ -141,7 +141,4 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue-deep);outline-
 .location-detail a{display:inline-flex;align-items:center;min-height:44px}
 .location-detail{align-items:center}
 
-.page-hero-img.art{display:flex;align-items:center;justify-content:center;gap:4%;background:linear-gradient(135deg,#E6F6FD 0%,var(--linen) 100%);color:var(--blue-deep);padding:8%}
-.page-hero-img.art svg{width:40%;height:auto;max-height:100%}
-.page-hero-img.art svg:only-child{width:46%}
 @media(max-width:768px){.hero-actions{margin-left:0;margin-right:0;width:100%}}
