@@ -1,0 +1,21 @@
+{
+  "name": "Aquapress Lavandería",
+  "short_name": "Aquapress",
+  "lang": "es-PE",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#00AEEF",
+  "background_color": "#FBF9F6",
+  "icons": [
+    {
+      "src": "/images/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
