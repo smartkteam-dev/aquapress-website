@@ -47,8 +47,8 @@ NAV_SERVICES = [
     ('/recojo-a-domicilio-lavanderia', 'Recojo a domicilio'),
 ]
 
-# TODO: placeholder year, confirm with the owner before launch (used in schema, footer and the home FAQ)
-FOUNDED = 2010
+# Founding year (confirmed by the owner); used in schema, footer and the home FAQ
+FOUNDED = 2013
 YEARS = int(YEAR) - FOUNDED
 YEARS_TEXT = f'más de {YEARS // 5 * 5} años' if YEARS >= 10 else f'{YEARS} años'
 
