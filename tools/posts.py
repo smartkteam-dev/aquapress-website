@@ -243,7 +243,7 @@ POSTS = [
 
 <h2>Cada cuánto limpiar un terno</h2>
 <p>Como referencia, unas dos a cuatro veces al año según el uso, y antes si hay manchas, olor o si lo usaste en un evento largo. Limpiarlo demasiado seguido también lo desgasta.</p>
-''' + cta('<strong>¿Tu terno necesita limpieza?</strong> En Aquapress limpiamos ternos, sacos y corbatas con nuestro servicio de <a href="/tintoreria-lavado-al-seco">tintorería y lavado al seco</a>. Lo revisamos prenda por prenda antes de empezar.', 'Consultar por WhatsApp', 'Hola, quisiera información sobre limpieza de ternos') + '''
+''' + cta('<strong>¿Tu terno necesita limpieza?</strong> En Aquapress limpiamos ternos, sacos y corbatas con nuestro servicio de <a href="/lavado-de-ternos-y-corbatas">lavado de ternos y corbatas</a>. Lo revisamos prenda por prenda antes de empezar.', 'Consultar por WhatsApp', 'Hola, quisiera información sobre limpieza de ternos') + '''
 
 <h2>Qué cuidar entre limpiezas</h2>
 <ul>
@@ -360,6 +360,6 @@ POSTS = [
 <p>Si prefieres no moverte, consulta el <a href="/recojo-a-domicilio-lavanderia">recojo a domicilio</a> por WhatsApp.</p>
 
 <h2>Y el resto de tu ropa deportiva</h2>
-<p>Lleva también tu ropa de entrenamiento: con el <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> no hay mínimo de prendas.</p>''',
+<p>Lleva también tu ropa de entrenamiento: con el <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> (mínimo 2 kg) la lavas junto con el resto de tu ropa.</p>''',
     },
 ]
