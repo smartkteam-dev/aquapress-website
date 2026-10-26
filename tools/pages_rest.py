@@ -4,7 +4,7 @@ from pages_core import steps_html, prose_section
 SVC_CARDS = lambda: ''.join([
     card('Lavado al peso y por prenda', 'Ropa del día a día, camisas, pantalones y ternos con planchado.', link='/lavado-al-peso-y-por-prenda', link_label='Ver servicio'),
     card('Tintorería y lavado al seco', 'Abrigos, alpaca, cuero, ternos y vestidos de novia.', link='/tintoreria-lavado-al-seco', link_label='Ver servicio', delay=.08),
-    card('Edredones y ropa de cama', 'Edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras.', link='/lavado-de-edredones-y-ropa-de-cama', link_label='Ver servicio', delay=.16),
+    card('Edredones y ropa de cama', 'Edredones de 1 y 2 plazas, queen y king, mantas polares, frazadas y protectores de colchón.', link='/lavado-de-edredones-y-ropa-de-cama', link_label='Ver servicio', delay=.16),
 ])
 
 
@@ -22,7 +22,7 @@ def district(slug, name, kw_extra, hero_name, hero_alt, intro, area_p, who_title
   <div class="container"><div class="prose fade-up">
     <h2>Tu lavandería para {name}</h2>
     {area_p}
-    <p>Nuestro local está en <strong>Av. del Parque Sur 193, San Isidro</strong>, distrito vecino a {name}. Atendemos de lunes a sábado de 7:30 AM a 7:30 PM, y coordinamos recojo y entrega a domicilio por WhatsApp.</p>
+    <p>Nuestro local está en <strong>Av. del Parque Sur 193, San Isidro</strong>, distrito vecino a {name}. Atendemos de lunes a sábado de 7:30 AM a 8:00 PM, y coordinamos recojo y entrega a domicilio por WhatsApp.</p>
   </div></div>
 </section>
 
@@ -67,9 +67,9 @@ def san_borja():
         ('¿Hay lavandería con recojo a domicilio en San Borja?',
          'Sí. Aquapress coordina recojo y entrega a domicilio en San Borja. Escríbenos por WhatsApp con tu dirección y confirmamos disponibilidad.'),
         ('¿Dónde queda el local de Aquapress respecto a San Borja?',
-         'Nuestro local está en Av. del Parque Sur 193, en San Isidro, distrito vecino a San Borja. Atendemos de lunes a sábado de 7:30 AM a 7:30 PM.'),
+         'Nuestro local está en Av. del Parque Sur 193, en San Isidro, distrito vecino a San Borja. Atendemos de lunes a sábado de 7:30 AM a 8:00 PM.'),
         ('¿Puedo llevar mis prendas yo mismo desde San Borja?',
-         'Sí. Puedes visitarnos en San Isidro y dejar tus prendas en nuestro local; no hay mínimo de prendas.'),
+         'Sí. Puedes visitarnos en San Isidro y dejar tus prendas en nuestro local.'),
         ('¿Lavan camisas, ternos y edredones de San Borja?',
          'Sí: <a href="/lavado-al-peso-y-por-prenda">camisas y pantalones con planchado</a>, <a href="/tintoreria-lavado-al-seco">ternos en tintorería</a> y <a href="/lavado-de-edredones-y-ropa-de-cama">edredones</a>, con recojo en tu domicilio u oficina.'),
     ]
@@ -93,17 +93,17 @@ def surquillo():
         ('¿Cuál es la lavandería de Aquapress más cercana a Surquillo?',
          'Nuestro local está en Av. del Parque Sur 193, San Isidro, distrito vecino a Surquillo. Si no puedes venir, el recojo a domicilio te ahorra el viaje.'),
         ('¿Puedo lavar mi ropa del día a día al peso desde Surquillo?',
-         'Sí. El <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> no tiene mínimo de prendas y se puede coordinar con recojo a domicilio.'),
+         'Sí. El <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> tiene un mínimo de 2 kg y se puede coordinar con recojo a domicilio.'),
         ('¿Lavan edredones y mantas de Surquillo?',
-         'Sí. Lavamos <a href="/lavado-de-edredones-y-ropa-de-cama">edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras</a>, y los recogemos en tu casa.'),
+         'Sí. Lavamos <a href="/lavado-de-edredones-y-ropa-de-cama">edredones de 1 y 2 plazas, queen y king, mantas polares, frazadas y protectores de colchón</a>, y los recogemos en tu casa.'),
     ]
     return district(
         'surquillo', 'Surquillo', 'lavandería cerca de Surquillo, lavado al peso Surquillo', 'cesto-ropa-para-lavar',
         'Canasta celeste con ropa sucia lista para lavar al peso, servicio con recojo en Surquillo',
-        'Recogemos tu ropa en Surquillo y te la devolvemos limpia. Lavado al peso para el día a día, tintorería, planchado y ropa de cama, sin mínimo de prendas.',
+        'Recogemos tu ropa en Surquillo y te la devolvemos limpia. Lavado al peso para el día a día, tintorería, planchado y ropa de cama. El lavado al peso tiene un mínimo de 2 kg.',
         '<p>Si vives en Surquillo, no necesitas ir hasta nuestro local para tener tu ropa limpia. Desde San Isidro coordinamos el recojo en zonas como la Av. Angamos, la Av. Tomás Marsano o los alrededores del mercado de Surquillo, para que no pierdas tiempo en traslados.</p>',
         'Para la rutina de cada semana en Surquillo',
-        '<p>El <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> es la opción más práctica para la ropa del día a día: polos, ropa casual y ropa interior. Lo coordinas por WhatsApp, recogemos y devolvemos, y tú te olvidas del lavado.</p><p>También puedes pedir el lavado de <a href="/lavado-de-edredones-y-ropa-de-cama">edredones, mantas y alfombras</a> o llevar camisas y pantalones para planchado cuando los necesites.</p>',
+        '<p>El <a href="/lavado-al-peso-y-por-prenda">lavado al peso</a> es la opción más práctica para la ropa del día a día: polos, ropa casual y ropa interior. Lo coordinas por WhatsApp, recogemos y devolvemos, y tú te olvidas del lavado.</p><p>También puedes pedir el lavado de <a href="/lavado-de-edredones-y-ropa-de-cama">edredones, frazadas y protectores de colchón</a> o llevar camisas y pantalones para planchado cuando los necesites.</p>',
         faqs,
         'Te devolvemos tus prendas limpias en tu puerta de Surquillo, o las recoges en San Isidro.',
         'Hola, quisiera coordinar un recojo en Surquillo',
@@ -119,7 +119,7 @@ def miraflores():
         ('¿Lavan vestidos de novia y de fiesta?',
          'Sí. Los vestidos de novia, de noche y de fiesta, incluidos los que tienen pedrería, forman parte de nuestro servicio de tintorería.'),
         ('¿Dónde queda el local de Aquapress respecto a Miraflores?',
-         'Estamos en Av. del Parque Sur 193, San Isidro, distrito vecino a Miraflores. Atendemos de lunes a sábado de 7:30 AM a 7:30 PM.'),
+         'Estamos en Av. del Parque Sur 193, San Isidro, distrito vecino a Miraflores. Atendemos de lunes a sábado de 7:30 AM a 8:00 PM.'),
     ]
     return district(
         'miraflores', 'Miraflores', 'lavandería cerca de Miraflores, tintorería Miraflores', 'prendas-lana-tejidos-delicados',

@@ -22,7 +22,7 @@ print('assets v', lib.ASSET_V, 'css', round(len(css)/1024,1), 'KB')
 
 import pages_new as new
 pages = [core.home(), core.lavado(), core.tintoreria(), core.edredones(), core.recojo(),
-         new.alfombras(), new.zapatillas(), new.vestidos(),
+         new.alfombras(), new.zapatillas(), new.vestidos(), new.ternos(),
          rest.san_borja(), rest.surquillo(), rest.miraflores(), rest.blog_index()]
 pages += [rest.post(p) for p in rest.POSTS]
 pages.append(rest.not_found())

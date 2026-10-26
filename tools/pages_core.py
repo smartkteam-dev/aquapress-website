@@ -21,13 +21,13 @@ def steps_html(extra_class=''):
 # =========================================================== HOME
 HOME_FAQS = [
     ('¿Dónde queda la lavandería Aquapress en San Isidro?',
-     'Estamos en Av. del Parque Sur 193, San Isidro 15036, Lima. Atendemos de lunes a sábado de 7:30 AM a 7:30 PM; los domingos permanecemos cerrados.'),
+     'Estamos en Av. del Parque Sur 193, San Isidro 15036, Lima. Atendemos de lunes a sábado de 7:30 AM a 8:00 PM; los domingos permanecemos cerrados.'),
     ('¿Qué servicios ofrece Aquapress?',
      'Ofrecemos <a href="/lavado-al-peso-y-por-prenda">lavado al peso y por prenda con planchado</a>, <a href="/tintoreria-lavado-al-seco">tintorería y lavado al seco</a>, <a href="/lavado-de-edredones-y-ropa-de-cama">lavado de edredones y ropa de cama</a>, prendas especiales y <a href="/recojo-a-domicilio-lavanderia">recojo a domicilio</a>.'),
     ('¿Hacen recojo a domicilio y en qué distritos?',
      'Sí. Coordinamos recojo y entrega a domicilio en San Isidro, <a href="/lavanderia-san-borja">San Borja</a>, <a href="/lavanderia-surquillo">Surquillo</a> y <a href="/lavanderia-miraflores">Miraflores</a>. Escríbenos por WhatsApp para confirmar disponibilidad en tu dirección.'),
-    ('¿Hay un mínimo de prendas para dejar mi ropa?',
-     'No. Puedes traer pocas o muchas prendas: no hay mínimo.'),
+    ('¿Hay un mínimo para el lavado al peso?',
+     'Sí. El lavado al peso tiene un mínimo de 2 kg. Si tienes menos ropa, escríbenos por WhatsApp y te orientamos sobre el lavado por prenda.'),
     ('¿Cuál es la diferencia entre lavado al peso y lavado por prenda?',
      'El lavado al peso es ideal para la ropa del día a día: la lavamos, secamos y entregamos al mejor precio. El lavado por prenda da atención individual a piezas como camisas, pantalones, ternos y casacas.'),
     ('¿Tienen servicio express?',
@@ -65,7 +65,7 @@ def home():
         <ul class="hero-trust">
           <li class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Drop-off en nuestro local</li>
           <li class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recojo a domicilio disponible</li>
-          <li class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sin mínimo de prendas</li>
+          <li class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Lavado al peso desde 2 kg</li>
           <li class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Servicio express disponible</li>
         </ul>
       </div>
@@ -78,44 +78,35 @@ def home():
 
     wave = lambda bg, fill, h=70: f'<div class="wave-divider" style="background:var(--{bg});" aria-hidden="true"><svg viewBox="0 0 1440 {h}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="var(--{fill})" d="M0,35 C360,70 720,0 1080,35 C1260,55 1380,45 1440,35 L1440,{h} L0,{h} Z"/></svg></div>'
 
-    photos = f'''<section class="photo-section">
-  <div class="container">
-    <div class="photo-section-header fade-up">
-      <span class="tag">Nuestro trabajo</span>
-      <h2 class="h2">Lavandería profesional: cuidado que se nota</h2>
-      <p class="lead" style="max-width:min(480px,100%);margin:14px auto 0;">Cada prenda recibe el tratamiento que merece. Esto es lo que hacemos todos los días.</p>
-    </div>
-    <div class="photo-grid fade-up">
-      <div class="photo-cell row-span-2">{img('chompas-tejidas-dobladas', 'Chompas tejidas de lana dobladas con cuidado después del lavado')}</div>
-      <div class="photo-cell">{img('lavadora-toallas-ropa-de-hogar', 'Lavadora y toallas limpias dobladas: lavado de ropa de hogar')}</div>
-      <div class="photo-cell">{img('ropa-doblada-jeans-camisetas', 'Jeans, camisetas y ropa casual limpia y doblada, lista para entregar')}</div>
-      <div class="photo-cell row-span-2">{img('prendas-lana-tejidos-delicados', 'Detalle de tejidos de lana y alpaca colgados en perchero')}</div>
-      <div class="photo-cell col-span-2">{img('lavadoras-industriales-acero', 'Lavadoras industriales de acero inoxidable con la puerta abierta', ctx='gridwide')}</div>
-    </div>
-  </div>
-</section>'''
-
+    step_rows = ''.join(
+        f'<li class="step-row fade-up"{f" style=transition-delay:{i*0.08:.2f}s" if i else ""}><span class="step-num">{i+1}</span>'
+        f'<div><h3 class="step-title">{t}</h3><p class="step-desc">{d}</p></div></li>'
+        for i, (t, d) in enumerate(STEPS))
     how = f'''<section class="how section" id="como-funciona">
-  <div class="container">
-    <div class="text-center fade-up" style="margin-bottom:56px;">
-      <span class="tag">Proceso simple</span>
-      <h2 class="h2">¿Cómo funciona nuestra lavandería?</h2>
-      <p class="lead" style="max-width:min(500px,100%);margin:14px auto 0;">Visítanos en nuestro local o, si lo prefieres, coordinamos el recojo en tu domicilio.</p>
+  <div class="container split">
+    <figure class="split-media fade-up">{img('chompas-tejidas-dobladas', 'Manos sosteniendo chompas tejidas de lana dobladas con cuidado después del lavado', ctx='split', big=True, w=1200, h=800)}</figure>
+    <div class="how-copy">
+      <div class="fade-up">
+        <span class="tag">Proceso simple</span>
+        <h2 class="h2">¿Cómo funciona nuestra lavandería?</h2>
+        <p class="lead" style="max-width:min(500px,100%);margin:14px 0 0;">Visítanos en nuestro local o, si lo prefieres, coordinamos el recojo en tu domicilio.</p>
+      </div>
+      <ol class="step-list">{step_rows}</ol>
     </div>
-    {steps_html()}
   </div>
 </section>'''
 
+    P = lambda n, alt, **k: img(n, alt, ctx='card', w=800, h=600, **k)
     cards = ''.join([
-        card('Lavado al peso', 'Ideal para tu ropa del día a día. Lavamos, secamos y entregamos impecable al mejor precio.', ['Ropa casual', 'Polos', 'Bermudas', 'Ropa interior'], '/lavado-al-peso-y-por-prenda#lavado-al-peso', 'Ver lavado al peso', 0, icon=ICON['peso']),
-        card('Lavado por prenda y planchado', 'Atención individualizada para cada pieza. Perfecto para prendas que merecen cuidado especial.', ['Camisas', 'Pantalones', 'Casacas', 'Planchado'], '/lavado-al-peso-y-por-prenda#lavado-por-prenda', 'Ver lavado por prenda', .08, icon=ICON['prenda']),
-        card('Tintorería y lavado al seco', 'Procesos especializados para prendas delicadas: lana, alpaca, cuero, gamuzas y telas finas.', ['Abrigos', 'Chompa alpaca', 'Cuero', 'Gamuza'], '/tintoreria-lavado-al-seco', 'Ver tintorería', .16, icon=ICON['seco']),
-        card('Ternos y prendas formales', 'Limpieza profesional para ternos, sacos y corbatas, para la oficina y las ocasiones importantes.', ['Ternos', 'Sacos', 'Corbatas', 'Camisas de vestir'], '/tintoreria-lavado-al-seco#prendas', 'Ver ternos y prendas formales', .24, icon=ICON['terno']),
-        card('Vestidos de novia y de fiesta', 'Tu vestido de gala, de novia o con pedrería merece el mejor cuidado profesional.', ['Vestidos de novia', 'Vestidos de fiesta', 'Pedrería'], '/lavado-de-vestidos-de-novia-y-fiesta', 'Ver vestidos de novia y fiesta', .32, icon=ICON['vestido']),
-        card('Ropa de cama y hogar', 'Edredones, mantas polares y todo lo necesario para mantener tu cama y tu hogar impecables.', ['Edredones 1–2 plz.', 'Mantas polares', 'Queen/King'], '/lavado-de-edredones-y-ropa-de-cama', 'Ver edredones y ropa de cama', .40, icon=ICON['cama']),
-        card('Alfombras y cortinas', 'Alfombras y cortinas de casa y oficina. Coordina el recojo a domicilio si son grandes o pesadas.', ['Alfombras', 'Cortinas'], '/lavado-de-alfombras-y-cortinas', 'Ver alfombras y cortinas', .48, icon=ICON['alfombra']),
-        card('Lavado de zapatillas', 'Limpiamos tus zapatillas según su material, con revisión previa para definir el tratamiento.', ['Deportivas', 'Urbanas', 'Blancas'], '/lavado-de-zapatillas', 'Ver lavado de zapatillas', .56, icon=ICON['zapatilla']),
-        card('Recojo a domicilio', 'Si no puedes venir, coordinamos el recojo en tu dirección. Consulta disponibilidad por WhatsApp.', ['San Isidro', 'San Borja', 'Surquillo', 'Miraflores'], '/recojo-a-domicilio-lavanderia', 'Ver recojo a domicilio', .64, icon=ICON['recojo']),
+        photo_card('Lavado al peso', 'Ideal para tu ropa del día a día. Lavamos, secamos y entregamos impecable al mejor precio.', ['Ropa casual', 'Polos', 'Bermudas', 'Ropa interior'], '/lavado-al-peso-y-por-prenda#lavado-al-peso', 'Ver lavado al peso', P('card-lavado-al-peso', 'Pilas de camisetas dobladas listas para entregar: lavado al peso')),
+        photo_card('Lavado por prenda y planchado', 'Atención individualizada para cada pieza. Perfecto para prendas que merecen cuidado especial.', ['Camisas', 'Pantalones', 'Casacas', 'Planchado'], '/lavado-al-peso-y-por-prenda#lavado-por-prenda', 'Ver lavado por prenda', P('ropa-doblada-jeans-camisetas', 'Jeans y camisetas limpios y doblados: lavado por prenda y planchado'), .08),
+        photo_card('Tintorería y lavado al seco', 'Procesos especializados para prendas delicadas: lana, alpaca, cuero, gamuzas y telas finas.', ['Abrigos', 'Chompa alpaca', 'Cuero', 'Gamuza'], '/tintoreria-lavado-al-seco', 'Ver tintorería', P('card-tintoreria', 'Prendas protegidas con fundas de plástico en una tintorería'), .16),
+        photo_card('Ternos y corbatas', 'Limpieza profesional para ternos, sacos y corbatas, para la oficina y las ocasiones importantes.', ['Ternos', 'Sacos', 'Corbatas'], '/lavado-de-ternos-y-corbatas', 'Ver ternos y corbatas', P('card-ternos', 'Corbatas de seda colgadas en fila: limpieza de ternos y corbatas'), .24),
+        photo_card('Vestidos de novia y de fiesta', 'Tu vestido de gala, de novia o con pedrería merece el mejor cuidado profesional.', ['Vestidos de novia', 'Vestidos de fiesta', 'Pedrería'], '/lavado-de-vestidos-de-novia-y-fiesta', 'Ver vestidos de novia y fiesta', P('vestido-novia-colgado-ventana', 'Vestido de novia de encaje y tul colgado de una percha de madera junto a una ventana: limpieza de vestidos de novia y de fiesta'), .32),
+        photo_card('Ropa de cama y hogar', 'Edredones, mantas polares y todo lo necesario para mantener tu cama y tu hogar impecables.', ['Edredones 1–2 plz.', 'Mantas polares', 'Queen/King'], '/lavado-de-edredones-y-ropa-de-cama', 'Ver edredones y ropa de cama', P('edredon-blanco-cojines-beige', 'Cama con edredón blanco, cojines de lino beige y cubrecama acolchado en tonos neutros'), .40),
+        photo_card('Alfombras y cortinas', 'Alfombras y cortinas de casa y oficina. Tráelas a nuestro local de San Isidro.', ['Alfombras', 'Cortinas'], '/lavado-de-alfombras-y-cortinas', 'Ver alfombras y cortinas', P('card-cortinas', 'Cortinas de lino junto a un ventanal en una sala luminosa'), .48),
+        photo_card('Lavado de zapatillas', 'Limpiamos tus zapatillas según su material, con revisión previa para definir el tratamiento.', ['Deportivas', 'Urbanas', 'Blancas'], '/lavado-de-zapatillas', 'Ver lavado de zapatillas', P('zapatillas-blancas-lona', 'Zapatillas blancas de lona sobre una tela blanca: servicio de lavado de zapatillas'), .56),
+        photo_card('Recojo a domicilio', 'Si no puedes venir, coordinamos el recojo en tu dirección. Consulta disponibilidad por WhatsApp.', ['San Isidro', 'San Borja', 'Surquillo', 'Miraflores'], '/recojo-a-domicilio-lavanderia', 'Ver recojo a domicilio', P('ropa-limpia-doblada-entrega-manos', 'Entrega de ropa limpia y doblada en las manos del cliente: recojo a domicilio'), .64),
     ])
     services = f'''<section class="services section" id="servicios">
   <div class="container">
@@ -213,7 +204,7 @@ def home():
         <div class="location-name">Aquapress Lavandería – San Isidro</div>
         <div class="location-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Av. del Parque Sur 193, San Isidro 15036, Lima, Perú</div>
         <div class="location-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:{TEL}">{TEL_FMT}</a></div>
-        <div class="location-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Lunes – Sábado: 7:30 AM – 7:30 PM · Domingos: Cerrado</div>
+        <div class="location-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Lunes – Sábado: 7:30 AM – 8:00 PM · Domingos: Cerrado</div>
         <div class="location-actions">
           <a href="{wa()}" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="tel:{TEL}" class="btn btn-outline btn-sm">Llamar</a>
@@ -224,7 +215,7 @@ def home():
   </div>
 </section>'''
 
-    body = '\n\n'.join([hero, wave('cream', 'white'), photos, wave('white', 'linen', 60), how, wave('linen', 'cream', 60), services, zonas, why, reviews, faq, cta, location])
+    body = '\n\n'.join([hero, wave('cream', 'linen'), how, wave('linen', 'cream', 60), services, zonas, why, reviews, faq, cta, location])
 
     biz = biz_node()
     biz['hasOfferCatalog'] = {
@@ -243,12 +234,12 @@ def home():
 
 
 # =========================================================== SERVICE PAGES
-def service_page(path, title, desc, kw, h1, lead, tag, hero_img, wa_text, sections, faqs, svc_name, svc_desc, svc_type, cta_title, cta_text, short_name):
+def service_page(path, title, desc, kw, h1, lead, tag, hero_img, wa_text, sections, faqs, svc_name, svc_desc, svc_type, cta_title, cta_text, short_name, og=None, split=None):
     trail = [('Inicio', '/'), (short_name, path)]
     hero = page_hero(trail, h1, lead, hero_img, wa_text, tag)
     body = '\n\n'.join([
         hero,
-        sections,
+        sections if not split else split_prose(sections, *split),
         districts_links(None, 'Servicio disponible en San Isidro, San Borja, Surquillo y Miraflores',
                         'Visítanos en San Isidro o coordina el recojo a domicilio en estos distritos.'),
         related_services(path),
@@ -256,7 +247,7 @@ def service_page(path, title, desc, kw, h1, lead, tag, hero_img, wa_text, sectio
         cta_band(cta_title, cta_text, wa_text),
     ])
     graph = [biz_node(), service_node(svc_name, svc_desc, path, svc_type), breadcrumb_node(trail), faq_node(faqs)]
-    return path, page(path, title, desc, kw, body, graph)
+    return path, page(path, title, desc, kw, body, graph, **(og or {}))
 
 
 def prose_section(inner, bg='sec-white'):
@@ -268,8 +259,8 @@ def lavado():
     faqs = [
         ('¿Cuándo conviene el lavado al peso y cuándo el lavado por prenda?',
          'El lavado al peso conviene para la ropa del día a día: polos, bermudas, ropa casual y ropa interior. El lavado por prenda es mejor para piezas que piden más cuidado, como camisas, pantalones, ternos y casacas.'),
-        ('¿Hay un mínimo de prendas para el lavado al peso?',
-         'No. En Aquapress no hay mínimo de prendas: puedes traer lo que necesites.'),
+        ('¿Hay un mínimo para el lavado al peso?',
+         'Sí. El lavado al peso tiene un mínimo de 2 kg. Si tienes menos ropa, consulta por WhatsApp el lavado por prenda.'),
         ('¿Hacen planchado de camisas y pantalones?',
          'Sí. Ofrecemos planchado de camisas, pantalones y ropa de vestir. Cuéntanos qué necesitas por WhatsApp o en nuestro local de San Isidro.'),
         ('¿Cuánto demora el servicio?',
@@ -285,7 +276,7 @@ def lavado():
     <p class="lead">Ideal para tu ropa del día a día. Lavamos, secamos y entregamos impecable al mejor precio.</p></div>
     <div class="grid-3">
       {card('Qué ropa va al peso', 'Polos, bermudas, ropa casual y ropa interior: todo lo que usas cada semana y no necesita un tratamiento individual.', ['Ropa casual', 'Polos', 'Bermudas', 'Ropa interior'], static=True)}
-      {card('Sin mínimo de prendas', 'Puedes traer una bolsa pequeña o varias. Pagas por lo que lavas, sin cantidades mínimas.', static=True, delay=.08)}
+      {card('Mínimo de 2 kg', 'Puedes traer una bolsa o varias, siempre desde 2 kg. Para menos ropa, consulta por WhatsApp el lavado por prenda.', static=True, delay=.08)}
       {card('Recoge o te la llevamos', 'Pasa por nuestro local de San Isidro o coordina el recojo y la entrega a domicilio por WhatsApp.', static=True, delay=.16)}
     </div>
   </div>
@@ -334,8 +325,8 @@ def lavado():
     return service_page(
         path,
         'Lavado al peso y por prenda en San Isidro | Aquapress',
-        'Lavado al peso, lavado por prenda y planchado en San Isidro. Sin mínimo de prendas y con recojo a domicilio en San Borja, Surquillo y Miraflores.',
-        'lavado al peso San Isidro, lavandería al peso, lavado por prenda, planchado de camisas, lavandería sin mínimo de prendas, lavar ropa San Isidro',
+        'Lavado al peso (desde 2 kg), lavado por prenda y planchado en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'lavado al peso San Isidro, lavandería al peso, lavado por prenda, planchado de camisas, lavado al peso desde 2 kg, lavar ropa San Isidro',
         'Lavado al peso y por prenda <em>en San Isidro</em>',
         'Lavamos tu ropa del día a día al peso y las prendas que piden más cuidado por pieza, con planchado. Visítanos en Av. del Parque Sur 193, San Isidro, o coordina el recojo a domicilio.',
         'Lavandería en San Isidro',
@@ -344,7 +335,8 @@ def lavado():
         secs, faqs,
         'Lavado al peso y por prenda', 'Lavado al peso para ropa diaria, lavado por prenda para camisas, pantalones, ternos y casacas, y planchado en San Isidro, Lima.',
         'Lavandería', '¿Listo para dejar tu ropa en buenas manos?', 'Visítanos en San Isidro o escríbenos para coordinar el recojo.',
-        'Lavado al peso y por prenda')
+        'Lavado al peso y por prenda',
+        split=('lavado-al-peso', 'Pilas de camisetas dobladas sobre una mesa de lavandería: lavado al peso y planchado'))
 
 
 def tintoreria():
@@ -370,8 +362,8 @@ def tintoreria():
     <div class="grid-4">
       {card('Abrigos y sacones', 'Prendas estructuradas y con forro que se limpian mejor en seco para conservar su forma.', ['Abrigos', 'Sacones'], static=True)}
       {card('Chompas de alpaca y lana', 'Tejidos finos que requieren un proceso cuidadoso para mantener su suavidad.', ['Chompa alpaca'], static=True, delay=.06)}
-      {card('Ternos y corbatas', 'Limpieza profesional para tu ropa formal de trabajo y de ocasiones especiales.', ['Ternos', 'Corbatas'], static=True, delay=.12)}
-      {card('Cuero y gamuza', 'Materiales delicados que no admiten el lavado normal y piden manos expertas.', ['Cuero', 'Gamuzas'], static=True, delay=.18)}
+      {card('Cuero y gamuza', 'Materiales delicados que no admiten el lavado normal y piden manos expertas.', ['Cuero', 'Gamuzas'], static=True, delay=.12)}
+      {card('Ternos y corbatas', 'Limpieza profesional para tu ropa formal de trabajo y de ocasiones especiales.', ['Ternos', 'Corbatas'], '/lavado-de-ternos-y-corbatas', 'Ver ternos y corbatas', delay=.18)}
     </div>
   </div>
 </section>
@@ -418,41 +410,43 @@ def tintoreria():
     return service_page(
         path,
         'Tintorería y lavado al seco en San Isidro | Aquapress',
-        'Tintorería y lavado al seco en San Isidro para abrigos, alpaca, cuero, ternos y vestidos de novia. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
-        'tintorería San Isidro, lavado al seco, lavado en seco Lima, limpieza de vestidos de novia, lavar abrigos de alpaca, tintorería de ternos, limpieza de cuero y gamuza',
+        'Tintorería y lavado al seco en San Isidro para abrigos, alpaca, cuero, gamuza y vestidos de novia. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'tintorería San Isidro, lavado al seco, lavado en seco Lima, limpieza de vestidos de novia, lavar abrigos de alpaca, limpieza de cuero y gamuza',
         'Tintorería y lavado al seco <em>en San Isidro</em>',
-        'Procesos especializados para prendas delicadas: abrigos, alpaca, cuero, gamuzas, ternos y vestidos de novia. Visítanos en San Isidro o coordina el recojo a domicilio.',
+        'Procesos especializados para prendas delicadas: abrigos, alpaca, cuero, gamuzas y vestidos de novia. Visítanos en San Isidro o coordina el recojo a domicilio.',
         'Tintorería en San Isidro',
         img('prendas-lana-tejidos-delicados', 'Chompas y abrigos de lana en un perchero: prendas delicadas para tintorería y lavado al seco', eager=True),
         'Hola, quisiera información sobre tintorería y lavado al seco',
         secs, faqs,
-        'Tintorería y lavado al seco', 'Tintorería y lavado al seco de abrigos, alpaca, cuero, gamuza, ternos, vestidos de novia y prendas con pedrería en San Isidro, Lima.',
+        'Tintorería y lavado al seco', 'Tintorería y lavado al seco de abrigos, alpaca, cuero, gamuza, vestidos de novia y prendas con pedrería en San Isidro, Lima.',
         'Tintorería', 'Confía tus prendas delicadas a especialistas', 'Escríbenos por WhatsApp y te orientamos sobre el tratamiento ideal.',
-        'Tintorería y lavado al seco')
+        'Tintorería y lavado al seco',
+        split=('tintoreria', 'Prendas colgadas y protegidas con fundas de plástico en una tintorería: tintorería y lavado al seco'))
 
 
 def edredones():
     path = '/lavado-de-edredones-y-ropa-de-cama'
     faqs = [
         ('¿Lavan edredones queen y king?',
-         'Sí. Lavamos edredones de 1 y 2 plazas, queen y king, además de mantas polares y alfombras.'),
+         'Sí. Lavamos edredones de 1 y 2 plazas, queen y king, además de mantas polares, frazadas y protectores de colchón.'),
         ('¿Cada cuánto debo lavar mi edredón?',
          'Como referencia, el edredón se lava unas veces al año según el uso, y la funda con más frecuencia. Con alergias, niños o mascotas conviene lavarlo más seguido. Lee la guía <a href="/blog/cada-cuanto-lavar-un-edredon">cada cuánto lavar un edredón y cómo hacerlo</a>.'),
         ('¿Por qué no lavarlo en mi lavadora de casa?',
          'Los edredones grandes suelen no caber bien en una lavadora doméstica: se enjuagan mal y tardan en secar, lo que favorece la humedad y los malos olores. Una lavandería con el equipo adecuado lo resuelve en un solo servicio.'),
-        ('¿Lavan mantas polares y alfombras?',
-         'Sí. Además de edredones, lavamos mantas polares, alfombras y otras piezas de ropa de cama y hogar.'),
+        ('¿Lavan frazadas y protectores de colchón?',
+         'Sí. Además de edredones, lavamos mantas polares, frazadas, protectores de colchón y otras piezas de ropa de cama.'),
         ('¿Hacen recojo a domicilio de edredones?',
          'Sí. Los edredones son voluminosos, por eso muchos clientes piden el <a href="/recojo-a-domicilio-lavanderia">recojo a domicilio</a> en San Isidro, San Borja, Surquillo y Miraflores.'),
     ]
     secs = f'''<section class="section sec-white" id="edredones">
   <div class="container">
-    <div class="section-head fade-up"><span class="tag">Ropa de cama y hogar</span><h2 class="h2">Edredones, mantas polares y alfombras</h2>
-    <p class="lead">Edredones, mantas polares, alfombras y todo lo necesario para mantener tu hogar impecable.</p></div>
-    <div class="grid-3">
+    <div class="section-head fade-up"><span class="tag">Ropa de cama y hogar</span><h2 class="h2">Edredones, frazadas y protectores de colchón</h2>
+    <p class="lead">Edredones, mantas polares, frazadas, protectores de colchón y todo lo necesario para mantener tu cama impecable.</p></div>
+    <div class="grid-4">
       {card('Edredones de 1 y 2 plazas', 'Lavado y secado completo para edredones de cama individual y de dos plazas.', ['Edredones 1–2 plz.'], static=True)}
       {card('Edredones queen y king', 'Piezas grandes que no caben bien en una lavadora de casa. Las lavamos y secamos por ti.', ['Queen/King'], static=True, delay=.08)}
-      {card('Mantas polares y cobertores', 'Mantas polares y cobertores para renovar tu ropa de cama. Para alfombras y cortinas, mira nuestro servicio dedicado.', ['Mantas polares', 'Cobertores'], static=True, delay=.16)}
+      {card('Mantas polares y frazadas', 'Mantas polares, frazadas y cobertores para renovar tu ropa de cama.', ['Mantas polares', 'Frazadas', 'Cobertores'], static=True, delay=.16)}
+      {card('Protectores de colchón', 'Lavamos tu protector de colchón para mantener tu cama higiénica y fresca.', ['Protectores de colchón'], static=True, delay=.24)}
     </div>
   </div>
 </section>
@@ -467,7 +461,7 @@ def edredones():
       <li><strong>Quieres ahorrar tiempo:</strong> lo recogemos en tu casa, lo lavamos y te lo devolvemos listo.</li>
     </ul>
     <div class="callout">
-      <p>¿Dudas sobre la frecuencia o el cuidado? Lee nuestra guía <a href="/blog/cada-cuanto-lavar-un-edredon">cada cuánto lavar un edredón y cómo hacerlo</a>. También lavamos <a href="/lavado-de-alfombras-y-cortinas">alfombras y cortinas</a>.</p>
+      <p>¿Dudas sobre la frecuencia o el cuidado? Lee nuestra guía <a href="/blog/cada-cuanto-lavar-un-edredon">cada cuánto lavar un edredón y cómo hacerlo</a>. Para el resto del hogar, mira el lavado de <a href="/lavado-de-alfombras-y-cortinas">alfombras y cortinas</a>.</p>
     </div>
   </div></div>
 </section>
@@ -481,17 +475,18 @@ def edredones():
     return service_page(
         path,
         'Lavado de edredones en San Isidro | Aquapress',
-        'Lavado de edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
-        'lavado de edredones, lavar edredón queen, lavandería de edredones San Isidro, lavado de mantas polares, lavado de alfombras, ropa de cama',
-        'Lavado de edredones, mantas y alfombras <em>en San Isidro</em>',
-        'Lavamos edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras. Visítanos en San Isidro o coordina el recojo a domicilio.',
+        'Lavado de edredones, mantas polares, frazadas y protectores de colchón en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'lavado de edredones, lavar edredón queen, lavandería de edredones San Isidro, lavado de mantas polares, lavado de frazadas, lavado de protectores de colchón, ropa de cama',
+        'Lavado de edredones, frazadas y protectores de colchón <em>en San Isidro</em>',
+        'Lavamos edredones de 1 y 2 plazas, queen y king, mantas polares, frazadas y protectores de colchón. Visítanos en San Isidro o coordina el recojo a domicilio.',
         'Ropa de cama y hogar',
         img('edredon-blanco-cojines-beige', 'Cama con edredón blanco, cojines de lino beige y cubrecama acolchado en tonos neutros: lavado de edredones y ropa de cama', eager=True),
         'Hola, quisiera información sobre el lavado de edredones',
         secs, faqs,
-        'Lavado de edredones y ropa de cama', 'Lavado de edredones de 1 y 2 plazas, queen y king, mantas polares y alfombras en San Isidro, Lima.',
+        'Lavado de edredones y ropa de cama', 'Lavado de edredones de 1 y 2 plazas, queen y king, mantas polares, frazadas y protectores de colchón en San Isidro, Lima.',
         'Lavado de edredones', 'Renueva tu ropa de cama', 'Escríbenos por WhatsApp y coordina el recojo de tu edredón.',
-        'Edredones y ropa de cama')
+        'Edredones y ropa de cama',
+        split=('edredones', 'Cama con edredón blanco, almohadas y luz natural: lavado de edredones y ropa de cama'))
 
 
 def recojo():

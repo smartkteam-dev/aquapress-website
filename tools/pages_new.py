@@ -9,7 +9,7 @@ def alfombras():
     path = '/lavado-de-alfombras-y-cortinas'
     faqs = [
         ('¿Lavan alfombras grandes?',
-         'Sí. Recibimos alfombras de distintos tamaños. Si la tuya es grande o pesada, consulta por WhatsApp el <a href="/recojo-a-domicilio-lavanderia">recojo a domicilio</a>.'),
+         'Sí. Recibimos alfombras de distintos tamaños. Tráela a nuestro local de San Isidro y te indicamos el tratamiento y el plazo de entrega.'),
         ('¿Cómo debo llevar mis cortinas?',
          'Retira los ganchos o argollas y tráelas dobladas. Así llegan seguras y listas para el proceso. Si tienes dudas, escríbenos antes por WhatsApp.'),
         ('¿Cuánto demora el lavado de alfombras y cortinas?',
@@ -24,7 +24,7 @@ def alfombras():
     <p class="lead">Las alfombras acumulan polvo, manchas y olores que el aspirado solo no quita.</p></div>
     <div class="grid-3">
       {card('Manchas y olores', 'Revisamos la alfombra y te indicamos el tratamiento según su material y el tipo de mancha.', static=True)}
-      {card('Piezas grandes y pesadas', 'Una alfombra grande es difícil de mover. Coordina el recojo a domicilio por WhatsApp.', static=True, delay=.08)}
+      {card('Cómo traerlas', 'Enrolla la alfombra sin doblarla y tráela a nuestro local de San Isidro. Así llega segura y lista para el proceso.', static=True, delay=.08)}
       {card('Plazo claro', 'Al recibir tu alfombra te indicamos el tratamiento y el plazo de entrega.', static=True, delay=.16)}
     </div>
   </div>
@@ -64,17 +64,18 @@ def alfombras():
     return service_page(
         path,
         'Lavado de alfombras y cortinas en San Isidro | Aquapress',
-        'Lavado de alfombras y cortinas en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores. Consulta por WhatsApp y coordina.',
+        'Lavado de alfombras y cortinas en San Isidro. Tráelas a nuestro local en Av. del Parque Sur 193 o consulta por WhatsApp.',
         'lavado de alfombras, lavado de cortinas, lavandería de alfombras, limpieza de cortinas, lavar alfombras San Isidro, lavandería de cortinas Lima',
         'Lavado de alfombras y cortinas <em>en San Isidro</em>',
-        'Lavamos alfombras y cortinas de casa y oficina. Tráelas a nuestro local de San Isidro o consulta por WhatsApp el recojo a domicilio.',
+        'Lavamos alfombras y cortinas de casa y oficina. Tráelas a nuestro local de San Isidro o consulta por WhatsApp.',
         'Hogar y decoración',
         img('cortinas-beige-alfombra-sala', 'Cortinas de lino beige frente a una ventana luminosa en una sala de tonos neutros: lavado de cortinas y alfombras', eager=True),
         'Hola, quisiera información sobre el lavado de alfombras o cortinas',
         secs, faqs,
-        'Lavado de alfombras y cortinas', 'Lavado de alfombras y cortinas de hogares y oficinas en San Isidro, Lima, con recojo a domicilio.',
-        'Lavado de alfombras y cortinas', 'Renueva tu hogar', 'Escríbenos por WhatsApp y coordina el recojo de tus alfombras o cortinas.',
-        'Alfombras y cortinas')
+        'Lavado de alfombras y cortinas', 'Lavado de alfombras y cortinas de hogares y oficinas en San Isidro, Lima.',
+        'Lavado de alfombras y cortinas', 'Renueva tu hogar', 'Escríbenos por WhatsApp y coordina la entrega de tus alfombras o cortinas en nuestro local.',
+        'Alfombras y cortinas',
+        split=('cortinas', 'Cortinas de lino color arena junto a un ventanal en una sala luminosa y minimalista: lavado de cortinas y alfombras'))
 
 
 def zapatillas():
@@ -134,7 +135,8 @@ def zapatillas():
         secs, faqs,
         'Lavado de zapatillas', 'Lavado de zapatillas deportivas, urbanas, blancas, de cuero y gamuza en San Isidro, Lima.',
         'Lavado de zapatillas', 'Devuélvele la vida a tus zapatillas', 'Escríbenos por WhatsApp o tráelas a nuestro local de San Isidro.',
-        'Zapatillas')
+        'Zapatillas',
+        split=('zapatillas', 'Zapatilla deportiva blanca y naranja, limpia, sobre un fondo gris claro: lavado de zapatillas'))
 
 
 def vestidos():
@@ -208,4 +210,82 @@ def vestidos():
         secs, faqs,
         'Lavado de vestidos de novia y de fiesta', 'Lavado y limpieza de vestidos de novia, de fiesta y de noche, con pedrería y encajes, en San Isidro, Lima.',
         'Lavado de vestidos', 'Confía tu vestido a especialistas', 'Escríbenos por WhatsApp y te orientamos sobre el tratamiento ideal.',
-        'Vestidos de novia y de fiesta')
+        'Vestidos de novia y de fiesta',
+        split=('vestidos', 'Vestido de novia de encaje y tul colgado en una habitación luminosa con ventana: limpieza de vestidos de novia'))
+
+
+def ternos():
+    path = '/lavado-de-ternos-y-corbatas'
+    faqs = [
+        ('¿Limpian ternos completos y sacos por separado?',
+         'Sí. Limpiamos el terno completo (saco y pantalón), sacos y pantalones de vestir por separado, y corbatas.'),
+        ('¿Por qué un terno no debe ir a la lavadora?',
+         'Un terno tiene entretela, hombreras y forro que dan estructura. El agua y el centrifugado pueden deformarlo, por eso se limpia en seco. Lee la guía <a href="/blog/como-lavar-un-terno">cómo lavar un terno y cada cuánto limpiarlo</a>.'),
+        ('¿Cada cuánto conviene limpiar un terno?',
+         'Depende del uso, pero conviene limpiarlo cuando tiene manchas u olores y antes de guardarlo por temporadas. Una limpieza demasiado frecuente no es necesaria si lo cuidas entre usos.'),
+        ('¿Limpian corbatas?',
+         'Sí. Las corbatas son de telas delicadas como la seda y se limpian con cuidado para no marcarlas ni deformarlas. Puedes traerlas junto con tu terno.'),
+        ('¿Hacen recojo a domicilio de ternos?',
+         'Sí. Coordinamos el <a href="/recojo-a-domicilio-lavanderia">recojo y la entrega a domicilio</a> de tus ternos en San Isidro, San Borja, Surquillo y Miraflores. Escríbenos por WhatsApp.'),
+        ('¿Cuánto demora la limpieza de un terno?',
+         'Al recibir tu terno te indicamos el plazo de entrega. Si tienes una fecha importante, avísanos al traerlo.'),
+    ]
+    secs = f'''<section class="section sec-white" id="ternos">
+  <div class="container">
+    <div class="section-head fade-up"><span class="tag">Ropa formal</span><h2 class="h2">Limpieza de ternos en San Isidro</h2>
+    <p class="lead">Un buen terno es una inversión. Lo limpiamos con el cuidado que su estructura y su tela necesitan.</p></div>
+    <div class="grid-3">
+      {card('Terno completo', 'Saco y pantalón limpios y cuidados para que conserven su forma, su caída y su color.', ['Terno', 'Saco', 'Pantalón'], static=True)}
+      {card('Sacos y pantalones de vestir', 'Si solo necesitas limpiar una pieza, también la recibimos por separado.', ['Sacos', 'Pantalones de vestir'], static=True, delay=.08)}
+      {card('Recojo y entrega', 'Coordinamos el recojo y la entrega a domicilio de tus ternos por WhatsApp.', static=True, delay=.16)}
+    </div>
+  </div>
+</section>
+
+<section class="section sec-linen" id="corbatas">
+  <div class="container">
+    <div class="section-head fade-up"><span class="tag">Corbatas</span><h2 class="h2">Limpieza de corbatas</h2>
+    <p class="lead">Seda y telas finas que se marcan con facilidad. Una mancha de comida no tiene por qué arruinarla.</p></div>
+    <div class="grid-3">
+      {card('Corbatas de seda', 'Las revisamos una por una antes de elegir el tratamiento, para no dañar la tela.', static=True)}
+      {card('Manchas de comida', 'Salsas, grasa o vino se tratan mejor cuanto antes. Tráela sin frotar la mancha.', static=True, delay=.08)}
+      {card('Junto con tu terno', 'Trae tu corbata con el terno y recibe todo el conjunto limpio en un solo servicio.', static=True, delay=.16)}
+    </div>
+  </div>
+</section>
+
+<section class="section sec-white">
+  <div class="container"><div class="prose fade-up">
+    <h2>Cuándo llevar tu terno a la tintorería</h2>
+    <ul>
+      <li><strong>Tiene manchas u olores</strong> de comida, sudor o humo que no salen con un cepillado.</li>
+      <li><strong>Vas a guardarlo</strong> por una temporada: guardarlo sucio atrae polillas y fija las manchas.</li>
+      <li><strong>Tienes un evento importante:</strong> una reunión, una boda o una entrevista. Avísanos la fecha al traerlo.</li>
+      <li><strong>Lo usas seguido en la oficina:</strong> una limpieza a tiempo ayuda a que dure más.</li>
+    </ul>
+    <p>Para más prendas delicadas, mira nuestra <a href="/tintoreria-lavado-al-seco">tintorería y lavado al seco</a>.</p>
+  </div></div>
+</section>
+
+<section class="how section">
+  <div class="container">
+    <div class="text-center fade-up" style="margin-bottom:48px;"><h2 class="h2">Cómo cuidamos tu terno</h2></div>
+    {steps_html()}
+  </div>
+</section>'''
+    return service_page(
+        path,
+        'Lavado de ternos y corbatas en San Isidro | Aquapress',
+        'Limpieza de ternos, sacos y corbatas en San Isidro, con recojo y entrega a domicilio en San Borja, Surquillo y Miraflores. Consulta por WhatsApp.',
+        'lavado de ternos, tintorería de ternos, limpieza de ternos San Isidro, lavado de corbatas, limpieza de corbatas, lavar saco, tintorería ternos Lima',
+        'Lavado de ternos y corbatas <em>en San Isidro</em>',
+        'Limpiamos ternos, sacos y corbatas con el cuidado que merece tu ropa formal. Visítanos en San Isidro o coordina el recojo a domicilio.',
+        'Ropa formal',
+        img('ternos-corbatas-novio-traje', 'Detalle de un terno azul grisáceo con corbata de lunares y flores en el bolsillo: limpieza de ternos y corbatas', eager=True, big=True, w=800, h=533),
+        'Hola, quisiera información sobre la limpieza de ternos o corbatas',
+        secs, faqs,
+        'Lavado de ternos y corbatas', 'Limpieza de ternos, sacos y corbatas en San Isidro, Lima, con recojo y entrega a domicilio.',
+        'Lavado de ternos y corbatas', 'Luce impecable en cada ocasión', 'Escríbenos por WhatsApp y coordina la limpieza de tu terno o tus corbatas.',
+        'Ternos y corbatas',
+        split=('ternos', 'Corbatas de seda de distintos colores y estampados colgadas en fila: limpieza de corbatas'),
+        og=dict(og_image='/images/og-lavado-de-ternos-y-corbatas.jpg', og_alt='Detalle de un terno azul grisáceo con corbata de lunares y flores en el bolsillo: limpieza de ternos y corbatas en Aquapress'))

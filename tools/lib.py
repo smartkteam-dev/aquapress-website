@@ -28,6 +28,7 @@ def wa(text='Hola, quisiera información sobre sus servicios'):
 SERVICES = [
     ('/lavado-al-peso-y-por-prenda', 'Lavado al peso y por prenda'),
     ('/tintoreria-lavado-al-seco', 'Tintorería y lavado al seco'),
+    ('/lavado-de-ternos-y-corbatas', 'Ternos y corbatas'),
     ('/lavado-de-edredones-y-ropa-de-cama', 'Edredones y ropa de cama'),
     ('/lavado-de-alfombras-y-cortinas', 'Alfombras y cortinas'),
     ('/lavado-de-zapatillas', 'Zapatillas'),
@@ -35,17 +36,34 @@ SERVICES = [
     ('/recojo-a-domicilio-lavanderia', 'Recojo a domicilio'),
 ]
 
-# Order used in the nav, mobile menu and footer. Ternos is an anchor inside the tintorería page.
-NAV_SERVICES = [
-    ('/lavado-al-peso-y-por-prenda', 'Lavado al peso y por prenda'),
-    ('/tintoreria-lavado-al-seco', 'Tintorería y lavado al seco'),
-    ('/tintoreria-lavado-al-seco#prendas', 'Ternos y prendas formales'),
-    ('/lavado-de-vestidos-de-novia-y-fiesta', 'Vestidos de novia y de fiesta'),
-    ('/lavado-de-edredones-y-ropa-de-cama', 'Edredones y ropa de cama'),
-    ('/lavado-de-alfombras-y-cortinas', 'Alfombras y cortinas'),
-    ('/lavado-de-zapatillas', 'Zapatillas'),
-    ('/recojo-a-domicilio-lavanderia', 'Recojo a domicilio'),
+# Nav groups (label, [(path, label)]). Each group is its own dropdown in the top bar.
+NAV_GROUPS = [
+    ('Ropa diaria', [
+        ('/lavado-al-peso-y-por-prenda', 'Lavado al peso y por prenda'),
+        ('/lavado-de-zapatillas', 'Zapatillas'),
+    ]),
+    ('Ropa formal', [
+        ('/lavado-de-ternos-y-corbatas', 'Ternos y corbatas'),
+        ('/lavado-de-vestidos-de-novia-y-fiesta', 'Vestidos de novia y de fiesta'),
+        ('/tintoreria-lavado-al-seco', 'Tintorería y lavado al seco'),
+    ]),
+    ('Hogar', [
+        ('/lavado-de-edredones-y-ropa-de-cama', 'Edredones y ropa de cama'),
+        ('/lavado-de-alfombras-y-cortinas', 'Alfombras y cortinas'),
+    ]),
 ]
+NAV_RECOJO = ('/recojo-a-domicilio-lavanderia', 'Recojo a domicilio')
+# Pickup dropdown: how it works, the pickup districts, and the local
+NAV_RECOJO_ITEMS = [
+    (NAV_RECOJO[0], 'Cómo funciona el recojo'),
+    ('/lavanderia-san-borja', 'Recojo en San Borja'),
+    ('/lavanderia-surquillo', 'Recojo en Surquillo'),
+    ('/lavanderia-miraflores', 'Recojo en Miraflores'),
+    ('/#local', 'Nuestro local en San Isidro'),
+]
+
+# Flat list in group order, used by the footer.
+NAV_SERVICES = [item for _, items in NAV_GROUPS for item in items] + [NAV_RECOJO]
 
 # Founding year (confirmed by the owner); used in schema, footer and the home FAQ
 FOUNDED = 2013
@@ -91,6 +109,8 @@ SIZES = {
     'page': '(min-width:1025px) 440px, (min-width:769px) 560px, 92vw',
     'post': '(min-width:1000px) 960px, 94vw',
     'thumb': '(min-width:1025px) 360px, (min-width:769px) 46vw, 92vw',
+    'split': '(min-width:1025px) 520px, (min-width:769px) 44vw, 92vw',
+    'card': '(min-width:1025px) 360px, (min-width:769px) 46vw, 92vw',
 }
 
 
@@ -136,7 +156,7 @@ def biz_node():
         'openingHoursSpecification': [{
             '@type': 'OpeningHoursSpecification',
             'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            'opens': '07:30', 'closes': '19:30',
+            'opens': '07:30', 'closes': '20:00',
         }],
         'areaServed': [
             {'@type': 'AdministrativeArea', 'name': 'San Isidro'},
@@ -190,20 +210,27 @@ def service_node(name, desc, path, service_type):
 
 # ---------------------------------------------------------------- chrome
 def nav_html():
-    svc = ''.join(f'<a href="{p}">{l}</a>' for p, l in NAV_SERVICES)
-    zon = ''.join(f'<a href="{p}">{l}</a>' for p, l in DISTRICTS)
-    m_svc = ''.join(f'<a href="{p}" class="mobile-link">{l}</a>' for p, l in NAV_SERVICES)
-    m_zon = ''.join(f'<a href="{p}" class="mobile-link">{l}</a>' for p, l in DISTRICTS)
+    def sub_links(items):
+        return ''.join('<a href="%s">%s</a>' % (p, l) for p, l in items)
+    groups = ''.join(
+        f'<div class="has-sub"><a href="{items[0][0]}">{g} <span class="caret" aria-hidden="true"></span></a>'
+        f'<div class="sub">{sub_links(items)}</div></div>'
+        for g, items in NAV_GROUPS)
+    groups += (f'<div class="has-sub"><a href="{NAV_RECOJO[0]}">{NAV_RECOJO[1]} <span class="caret" aria-hidden="true"></span></a>'
+               f'<div class="sub">{sub_links(NAV_RECOJO_ITEMS)}</div></div>')
+    m_svc = ''.join(
+        f'<div class="mobile-group">{g}</div>' + ''.join(f'<a href="{p}" class="mobile-link">{l}</a>' for p, l in items)
+        for g, items in NAV_GROUPS)
+    m_svc += f'<div class="mobile-group">{NAV_RECOJO[1]}</div>' + ''.join(
+        f'<a href="{p}" class="mobile-link">{l}</a>' for p, l in NAV_RECOJO_ITEMS)
     return f'''<div id="top-sentinel" aria-hidden="true"></div>
 <a class="skip-link" href="#content">Saltar al contenido</a>
 <nav id="main-nav" aria-label="Navegación principal">
   <div class="container nav-inner">
     <a href="/" class="nav-logo"><img src="/images/aquapress-logo.png" alt="Aquapress Lavandería, lavandería y tintorería en San Isidro" width="339" height="108" class="logo-nav" fetchpriority="high" /></a>
     <div class="nav-links">
-      <div class="has-sub"><a href="/#servicios">Servicios <span class="caret" aria-hidden="true"></span></a><div class="sub">{svc}</div></div>
-      <div class="has-sub"><a href="/#zonas">Cobertura <span class="caret" aria-hidden="true"></span></a><div class="sub">{zon}</div></div>
+      {groups}
       <a href="/blog">Blog</a>
-      <a href="/#local">Ubicación</a>
     </div>
     <div class="nav-cta">
       <a href="tel:{TEL}" class="btn btn-outline btn-sm">Llamar</a>
@@ -214,12 +241,8 @@ def nav_html():
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <div class="mobile-group">Servicios</div>
   {m_svc}
-  <div class="mobile-group">Cobertura</div>
-  {m_zon}
   <a href="/blog" class="mobile-link">Blog</a>
-  <a href="/#local" class="mobile-link">Ubicación</a>
   <a href="tel:{TEL}" class="btn btn-outline" style="margin-top:12px;">Llamar</a>
   <a href="{wa()}" class="btn btn-wa" target="_blank" rel="noopener noreferrer">WhatsApp</a>
 </div>'''
@@ -269,7 +292,7 @@ def footer_html():
           <li><a href="/#local">San Isidro, Lima, Perú</a></li>
         </ul>
         <div class="footer-hours">
-          <p>Lun – Sáb: 7:30 AM – 7:30 PM</p>
+          <p>Lun – Sáb: 7:30 AM – 8:00 PM</p>
           <p style="color:var(--mist);">Domingos: Cerrado</p>
         </div>
       </div>
@@ -424,6 +447,25 @@ def chips(items):
     return '<div class="service-tags">' + ''.join(f'<span class="chip">{c}</span>' for c in items) + '</div>'
 
 
+def split_prose(sections, name, alt):
+    """Turn the first prose section into a split: portrait photo on the left, text on the right."""
+    pat = re.compile(r'<section class="section (sec-[\w-]+)"([^>]*)>\s*<div class="container"><div class="prose fade-up">(.*?)</div></div>\s*</section>', re.S)
+    m = pat.search(sections)
+    assert m, 'no prose section to split'
+    new = (f'<section class="section {m.group(1)}"{m.group(2)}>\n  <div class="container split">\n'
+           f'    <figure class="split-media fade-up">{img("split-" + name, alt, ctx="split", w=800, h=1000, big=True)}</figure>\n'
+           f'    <div class="prose fade-up">{m.group(3)}</div>\n  </div>\n</section>')
+    return sections[:m.start()] + new + sections[m.end():]
+
+
+def photo_card(title, desc, chip_list, link, link_label, photo, delay=0):
+    """Service card led by a photo; the photo links to the same page but stays out of the tab order."""
+    d = f' style="transition-delay:{delay:.2f}s"' if delay else ''
+    return (f'<div class="service-card photo fade-up"{d}><a href="{link}" class="sc-media" tabindex="-1" aria-hidden="true">{photo}</a>'
+            f'<div class="sc-body"><h3 class="service-title"><a href="{link}">{title}</a></h3><p class="service-desc">{desc}</p>'
+            f'{chips(chip_list)}<a href="{link}" class="card-link" aria-label="{link_label}: {title}">{link_label} <span aria-hidden="true">→</span></a></div></div>')
+
+
 def card(title, desc, chip_list=None, link=None, link_label='Ver más', delay=0, static=False, icon=''):
     d = f' style="transition-delay:{delay:.2f}s"' if delay else ''
     t = f'<a href="{link}">{title}</a>' if link else title
@@ -453,9 +495,10 @@ def page_hero(trail, h1_html, lead, hero_img_html, wa_text, tag=None):
 
 RELATED = {
     '/lavado-al-peso-y-por-prenda': ['/tintoreria-lavado-al-seco', '/lavado-de-edredones-y-ropa-de-cama', '/recojo-a-domicilio-lavanderia'],
-    '/tintoreria-lavado-al-seco': ['/lavado-de-vestidos-de-novia-y-fiesta', '/lavado-al-peso-y-por-prenda', '/recojo-a-domicilio-lavanderia'],
+    '/tintoreria-lavado-al-seco': ['/lavado-de-ternos-y-corbatas', '/lavado-de-vestidos-de-novia-y-fiesta', '/recojo-a-domicilio-lavanderia'],
+    '/lavado-de-ternos-y-corbatas': ['/tintoreria-lavado-al-seco', '/lavado-al-peso-y-por-prenda', '/recojo-a-domicilio-lavanderia'],
     '/lavado-de-edredones-y-ropa-de-cama': ['/lavado-de-alfombras-y-cortinas', '/lavado-al-peso-y-por-prenda', '/recojo-a-domicilio-lavanderia'],
-    '/lavado-de-alfombras-y-cortinas': ['/lavado-de-edredones-y-ropa-de-cama', '/lavado-de-zapatillas', '/recojo-a-domicilio-lavanderia'],
+    '/lavado-de-alfombras-y-cortinas': ['/lavado-de-edredones-y-ropa-de-cama', '/lavado-de-zapatillas', '/lavado-al-peso-y-por-prenda'],
     '/lavado-de-zapatillas': ['/lavado-al-peso-y-por-prenda', '/tintoreria-lavado-al-seco', '/recojo-a-domicilio-lavanderia'],
     '/lavado-de-vestidos-de-novia-y-fiesta': ['/tintoreria-lavado-al-seco', '/lavado-al-peso-y-por-prenda', '/recojo-a-domicilio-lavanderia'],
     '/recojo-a-domicilio-lavanderia': ['/lavado-al-peso-y-por-prenda', '/lavado-de-edredones-y-ropa-de-cama', '/lavado-de-alfombras-y-cortinas'],
@@ -463,8 +506,9 @@ RELATED = {
 RELATED_DESC = {
     '/lavado-al-peso-y-por-prenda': 'Lavado al peso para tu ropa diaria y lavado por prenda con planchado.',
     '/tintoreria-lavado-al-seco': 'Abrigos, alpaca, ternos, cuero, gamuza y prendas delicadas.',
+    '/lavado-de-ternos-y-corbatas': 'Ternos, sacos y corbatas, con recojo y entrega a domicilio.',
     '/lavado-de-edredones-y-ropa-de-cama': 'Edredones de 1 y 2 plazas, queen y king, y mantas polares.',
-    '/lavado-de-alfombras-y-cortinas': 'Alfombras y cortinas de casa y oficina, con recojo a domicilio.',
+    '/lavado-de-alfombras-y-cortinas': 'Alfombras y cortinas de casa y oficina, en nuestro local de San Isidro.',
     '/lavado-de-zapatillas': 'Limpieza de zapatillas según su material, con revisión previa.',
     '/lavado-de-vestidos-de-novia-y-fiesta': 'Vestidos de novia, de noche y de fiesta, con pedrería y encajes.',
     '/recojo-a-domicilio-lavanderia': 'Recojo y entrega en San Isidro, San Borja, Surquillo y Miraflores.',
@@ -484,7 +528,7 @@ def related_services(current, heading='Otros servicios de Aquapress'):
 
 def districts_links(current=None, heading='Zonas donde atendemos', lead=None):
     d = {
-        '/': ('Nuestro local en San Isidro', 'Nuestro local: Av. del Parque Sur 193. Lunes a sábado de 7:30 AM a 7:30 PM.'),
+        '/': ('Nuestro local en San Isidro', 'Nuestro local: Av. del Parque Sur 193. Lunes a sábado de 7:30 AM a 8:00 PM.'),
         '/lavanderia-san-borja': ('Recojo a domicilio en San Borja', 'Recojo y entrega a domicilio en San Borja, coordinados por WhatsApp.'),
         '/lavanderia-surquillo': ('Recojo a domicilio en Surquillo', 'Recojo y entrega a domicilio en Surquillo, coordinados por WhatsApp.'),
         '/lavanderia-miraflores': ('Recojo a domicilio en Miraflores', 'Recojo y entrega a domicilio en Miraflores, coordinados por WhatsApp.'),
