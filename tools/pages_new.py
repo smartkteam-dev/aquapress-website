@@ -64,7 +64,7 @@ def alfombras():
     return service_page(
         path,
         'Lavado de alfombras y cortinas en San Isidro | Aquapress',
-        'Lavado de alfombras y cortinas en San Isidro. Tráelas a nuestro local en Av. del Parque Sur 193 o consulta por WhatsApp.',
+        'Alfombras y cortinas limpias y frescas en San Isidro. Tráelas a Av. del Parque Sur 193 o escríbenos por WhatsApp y te cotizamos al instante.',
         'lavado de alfombras, lavado de cortinas, lavandería de alfombras, limpieza de cortinas, lavar alfombras San Isidro, lavandería de cortinas Lima',
         'Lavado de alfombras y cortinas <em>en San Isidro</em>',
         'Lavamos alfombras y cortinas de casa y oficina. Tráelas a nuestro local de San Isidro o consulta por WhatsApp.',
@@ -125,7 +125,7 @@ def zapatillas():
     return service_page(
         path,
         'Lavado de zapatillas en San Isidro | Aquapress',
-        'Lavado de zapatillas en San Isidro según su material: deportivas, blancas, de cuero y gamuza. Recojo a domicilio. Consulta por WhatsApp.',
+        'Zapatillas como nuevas: deportivas, blancas, de cuero y gamuza, lavadas según su material en San Isidro. Cotiza y pide recojo por WhatsApp.',
         'lavado de zapatillas, lavandería de zapatillas, limpieza de zapatillas, lavar zapatillas blancas, lavado de zapatillas San Isidro',
         'Lavado de zapatillas <em>en San Isidro</em>',
         'Limpiamos tus zapatillas según su material, con revisión previa para definir el tratamiento. Déjalas en San Isidro o consulta el recojo por WhatsApp.',
@@ -200,7 +200,7 @@ def vestidos():
     return service_page(
         path,
         'Lavado de vestidos de novia en San Isidro | Aquapress',
-        'Lavado de vestidos de novia, de fiesta y de noche en San Isidro, con pedrería y encajes. Revisión individual y recojo a domicilio.',
+        'Cuidamos tu vestido de novia, fiesta o noche con pedrería y encajes. Revisión individual y recojo a domicilio. Reserva por WhatsApp.',
         'lavado de vestidos de novia, limpieza de vestido de novia, lavado de vestidos de fiesta, vestido de novia tintorería, limpiar vestido con pedrería',
         'Lavado de vestidos de novia y de fiesta <em>en San Isidro</em>',
         'Cuidamos vestidos de novia, de noche y de fiesta, incluso con pedrería y encajes, con revisión individual antes de definir el tratamiento.',
@@ -276,7 +276,7 @@ def ternos():
     return service_page(
         path,
         'Lavado de ternos y corbatas en San Isidro | Aquapress',
-        'Limpieza de ternos, sacos y corbatas en San Isidro, con recojo y entrega a domicilio en San Borja, Surquillo y Miraflores. Consulta por WhatsApp.',
+        'Ternos, sacos y corbatas impecables en San Isidro. Revisión prenda por prenda y recojo a domicilio. Pide tu cotización por WhatsApp.',
         'lavado de ternos, tintorería de ternos, limpieza de ternos San Isidro, lavado de corbatas, limpieza de corbatas, lavar saco, tintorería ternos Lima',
         'Lavado de ternos y corbatas <em>en San Isidro</em>',
         'Limpiamos ternos, sacos y corbatas con el cuidado que merece tu ropa formal. Visítanos en San Isidro o coordina el recojo a domicilio.',

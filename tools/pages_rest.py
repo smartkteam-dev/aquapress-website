@@ -10,8 +10,8 @@ SVC_CARDS = lambda: ''.join([
 
 def district(slug, name, kw_extra, hero_name, hero_alt, intro, area_p, who_title, who_p, faqs, steps_note, wa_text, other_note):
     path = f'/lavanderia-{slug}'
-    title = f'Lavandería en {name} con recojo a domicilio | Aquapress'
-    desc = f'Lavandería en {name} con recojo a domicilio: lavado al peso, tintorería, planchado y edredones. Aquapress, en San Isidro. Pide tu recojo por WhatsApp.'
+    title = f'Recojo a domicilio de lavandería en {name} | Aquapress'
+    desc = f'Recogemos tu ropa en {name} y te la devolvemos lista. Lavado al peso, tintorería y edredones desde San Isidro. Pide tu recojo por WhatsApp.'
     kw = f'lavandería {name}, lavandería en {name}, tintorería {name}, recojo a domicilio {name}, lavandería a domicilio {name}, {kw_extra}'
     trail = [('Inicio', '/'), (f'Lavandería en {name}', path)]
     hero = page_hero(trail, f'Lavandería en {name} <em>con recojo a domicilio</em>', intro,
@@ -215,8 +215,8 @@ def blog_index():
   <div class="container"><div class="grid-3">{cards}</div></div>
 </section>
 {cta_band('¿Tienes una prenda delicada?', 'Escríbenos por WhatsApp y te orientamos sobre el mejor tratamiento.', 'Hola, quisiera una recomendación para cuidar una prenda')}'''
-    title = 'Blog de cuidado de ropa y lavandería | Aquapress'
-    desc = 'Consejos de lavandería y tintorería: cómo lavar alpaca, guardar ropa de invierno y cuidar edredones. Guías prácticas de Aquapress en San Isidro.'
+    title = 'Consejos para cuidar tu ropa y evitar errores | Aquapress'
+    desc = 'Guías prácticas para lavar alpaca, guardar ropa de invierno y cuidar edredones sin dañarlos. Consejos de los expertos de Aquapress, en San Isidro.'
     kw = 'blog de lavandería, consejos para lavar ropa, cuidado de ropa, cómo cuidar prendas delicadas, consejos de tintorería'
     graph = [
         biz_node(),

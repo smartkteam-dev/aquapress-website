@@ -21,7 +21,7 @@ def steps_html(extra_class=''):
 # =========================================================== HOME
 HOME_FAQS = [
     ('¿Dónde queda la lavandería Aquapress en San Isidro?',
-     'Estamos en Av. del Parque Sur 193, San Isidro 15036, Lima. Atendemos de lunes a sábado de 7:30 AM a 8:00 PM; los domingos permanecemos cerrados.'),
+     'Estamos en Av. del Parque Sur 193, San Isidro, Lima, y atendemos de lunes a sábado de 7:30 AM a 8:00 PM. ¿Prefieres que vayamos a ti? Escríbenos por WhatsApp y coordinamos tu recojo a domicilio.'),
     ('¿Qué servicios ofrece Aquapress?',
      'Ofrecemos <a href="/lavado-al-peso-y-por-prenda">lavado al peso y por prenda con planchado</a>, <a href="/tintoreria-lavado-al-seco">tintorería y lavado al seco</a>, <a href="/lavado-de-edredones-y-ropa-de-cama">lavado de edredones y ropa de cama</a>, prendas especiales y <a href="/recojo-a-domicilio-lavanderia">recojo a domicilio</a>.'),
     ('¿Hacen recojo a domicilio y en qué distritos?',
@@ -44,7 +44,7 @@ HOME_FAQS = [
 def home():
     path = '/'
     title = 'Lavandería y tintorería en San Isidro | Aquapress'
-    desc = 'Lavandería y tintorería en San Isidro: lavado al peso, planchado, edredones y recojo a domicilio en San Borja, Surquillo y Miraflores. Escríbenos.'
+    desc = 'Lavandería y tintorería en San Isidro desde 2013. Lavado al peso, planchado y edredones con recojo y entrega a domicilio. Pide tu cotización por WhatsApp.'
     kw = 'lavandería San Isidro, tintorería San Isidro, lavandería cerca de mí, lavado al peso San Isidro, lavado al seco, planchado de camisas, recojo a domicilio, Aquapress'
     hero_imgs = f'''<div class="hero-mosaic">
           <div class="mosaic-img tall">{img('cesto-ropa-para-lavar', 'Canasta celeste con ropa sucia lista para el lavado al peso en San Isidro', eager=True, ctx='mosaic')}</div>
@@ -325,7 +325,7 @@ def lavado():
     return service_page(
         path,
         'Lavado al peso y por prenda en San Isidro | Aquapress',
-        'Lavado al peso (desde 2 kg), lavado por prenda y planchado en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'Lavado al peso desde 2 kg y lavado por prenda con planchado en San Isidro. Ropa limpia y lista, con recojo a domicilio. Cotiza por WhatsApp.',
         'lavado al peso San Isidro, lavandería al peso, lavado por prenda, planchado de camisas, lavado al peso desde 2 kg, lavar ropa San Isidro',
         'Lavado al peso y por prenda <em>en San Isidro</em>',
         'Lavamos tu ropa del día a día al peso y las prendas que piden más cuidado por pieza, con planchado. Visítanos en Av. del Parque Sur 193, San Isidro, o coordina el recojo a domicilio.',
@@ -410,7 +410,7 @@ def tintoreria():
     return service_page(
         path,
         'Tintorería y lavado al seco en San Isidro | Aquapress',
-        'Tintorería y lavado al seco en San Isidro para abrigos, alpaca, cuero, gamuza y vestidos de novia. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'Tintorería en San Isidro para abrigos, alpaca, cuero, gamuza y ternos. Cuidado experto y recojo a domicilio. Cotiza por WhatsApp.',
         'tintorería San Isidro, lavado al seco, lavado en seco Lima, limpieza de vestidos de novia, lavar abrigos de alpaca, limpieza de cuero y gamuza',
         'Tintorería y lavado al seco <em>en San Isidro</em>',
         'Procesos especializados para prendas delicadas: abrigos, alpaca, cuero, gamuzas y vestidos de novia. Visítanos en San Isidro o coordina el recojo a domicilio.',
@@ -475,7 +475,7 @@ def edredones():
     return service_page(
         path,
         'Lavado de edredones en San Isidro | Aquapress',
-        'Lavado de edredones, mantas polares, frazadas y protectores de colchón en San Isidro. Recojo a domicilio en San Borja, Surquillo y Miraflores.',
+        'Edredones, frazadas y mantas limpios y esponjosos en San Isidro. Recojo y entrega a domicilio en San Borja, Surquillo y Miraflores. Cotiza por WhatsApp.',
         'lavado de edredones, lavar edredón queen, lavandería de edredones San Isidro, lavado de mantas polares, lavado de frazadas, lavado de protectores de colchón, ropa de cama',
         'Lavado de edredones, frazadas y protectores de colchón <em>en San Isidro</em>',
         'Lavamos edredones de 1 y 2 plazas, queen y king, mantas polares, frazadas y protectores de colchón. Visítanos en San Isidro o coordina el recojo a domicilio.',
@@ -531,7 +531,7 @@ def recojo():
     return service_page(
         path,
         'Lavandería con recojo a domicilio en San Isidro | Aquapress',
-        'Lavandería con recojo a domicilio en San Isidro, San Borja, Surquillo y Miraflores. Escríbenos por WhatsApp y coordinamos el recojo de tu ropa.',
+        'Recogemos tu ropa en San Isidro, San Borja, Surquillo y Miraflores y te la devolvemos lista. Pide tu recojo a domicilio por WhatsApp.',
         'lavandería con recojo a domicilio, lavandería a domicilio, recojo de ropa a domicilio, lavandería delivery San Isidro, lavandería a domicilio Miraflores',
         'Lavandería con recojo a domicilio <em>en San Isidro, San Borja, Surquillo y Miraflores</em>',
         'Si no puedes venir, coordinamos el recojo en tu casa u oficina y te devolvemos tus prendas limpias. Consulta disponibilidad por WhatsApp.',
