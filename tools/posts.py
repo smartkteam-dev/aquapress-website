@@ -12,9 +12,9 @@ POSTS = [
     # ------------------------------------------------------------------ 1
     {
         'slug': 'guardar-ropa-de-invierno-antes-del-verano',
-        'title': 'Guardar ropa de invierno antes del verano | Aquapress',
+        'title': 'Cómo guardar tu ropa de invierno para que dure | Aquapress',
         'h1': 'Cómo guardar la ropa de invierno antes del verano',
-        'desc': 'Limpia, seca y guarda bien tus abrigos, chompas y ternos para que salgan impecables el próximo invierno. Guía práctica para Lima.',
+        'desc': 'Cómo limpiar, secar y guardar abrigos, chompas y ternos para que salgan impecables el próximo invierno. Guía práctica para Lima.',
         'kw': 'guardar ropa de invierno, cómo guardar ropa de temporada, limpiar abrigos antes de guardar, polillas en la ropa, ropa de invierno Lima',
         'img': 'chompas-tejidas-dobladas', 'og': 'og-guardar-ropa-de-invierno',
         'alt': 'Persona cargando chompas tejidas dobladas para guardar la ropa de invierno',
@@ -74,9 +74,9 @@ POSTS = [
     # ------------------------------------------------------------------ 2
     {
         'slug': 'como-lavar-chompa-de-alpaca',
-        'title': 'Cómo lavar una chompa de alpaca sin dañarla | Aquapress',
+        'title': 'Cómo lavar una chompa de alpaca sin deformarla | Aquapress',
         'h1': 'Cómo lavar una chompa de alpaca sin dañarla',
-        'desc': 'Qué debes saber antes de lavar una chompa de alpaca, los errores que la dañan y cuándo conviene traerla a Aquapress.',
+        'desc': 'Cómo lavar una chompa de alpaca sin que se deforme: errores comunes y cuándo dejarla en manos expertas. Guía de Aquapress, San Isidro.',
         'kw': 'lavar chompa de alpaca, cómo lavar alpaca, lavar prendas de lana, cuidado de alpaca, tintorería alpaca',
         'img': 'prendas-lana-tejidos-delicados', 'og': 'og-lavar-chompa-de-alpaca',
         'alt': 'Chompas y abrigos de lana beige y marrón colgados en un perchero',
@@ -122,9 +122,9 @@ POSTS = [
     # ------------------------------------------------------------------ 3
     {
         'slug': 'cada-cuanto-lavar-un-edredon',
-        'title': 'Cada cuánto lavar un edredón y cómo hacerlo | Aquapress',
+        'title': '¿Cada cuánto lavar tu edredón? Guía rápida | Aquapress',
         'h1': 'Cada cuánto lavar un edredón y cómo hacerlo',
-        'desc': 'Descubre cada cuánto lavar un edredón, por qué en casa suele salir mal y cuándo conviene traerlo a Aquapress.',
+        'desc': '¿Cada cuánto lavar un edredón? Por qué en casa suele salir mal y cuándo dejarlo en manos expertas. Guía de Aquapress, San Isidro.',
         'kw': 'cada cuánto lavar un edredón, cómo lavar un edredón, lavar edredón queen, secar edredón, lavandería de edredones',
         'img': 'edredon-blanco-cojines-beige', 'og': 'og-cada-cuanto-lavar-un-edredon',
         'alt': 'Cama con edredón blanco, cojines de lino beige y cubrecama acolchado en tonos neutros',
@@ -176,9 +176,9 @@ POSTS = [
     # ------------------------------------------------------------------ 4
     {
         'slug': 'que-es-el-lavado-en-seco',
-        'title': '¿Qué es el lavado en seco y cómo funciona? | Aquapress',
+        'title': 'Lavado en seco: qué es y qué prendas lo piden | Aquapress',
         'h1': '¿Qué es el lavado en seco y cuándo lo necesita tu ropa?',
-        'desc': 'Qué es el lavado en seco, cómo funciona, qué prendas lo necesitan y por qué no es lo mismo que lavar en casa. Guía de Aquapress.',
+        'desc': '¿Qué es el lavado en seco? Cómo funciona, qué prendas lo necesitan y en qué se diferencia de lavar en casa. Guía de Aquapress.',
         'kw': 'qué es el lavado en seco, lavado en seco, cómo funciona el lavado al seco, dry cleaning, tintorería, ropa dry clean only',
         'img': 'prendas-fundas-plastico-tintoreria', 'og': 'og-lavado-en-seco',
         'alt': 'Prendas colgadas con fundas de plástico en una tintorería, listas para entregar',
@@ -222,9 +222,9 @@ POSTS = [
     # ------------------------------------------------------------------ 5
     {
         'slug': 'como-lavar-un-terno',
-        'title': 'Cómo lavar un terno y cada cuánto limpiarlo | Aquapress',
+        'title': 'Cómo lavar un terno sin deformarlo ni arruinarlo | Aquapress',
         'h1': 'Cómo lavar un terno y cuidarlo para que dure',
-        'desc': 'Cómo lavar un terno sin deformarlo, cada cuánto limpiarlo y qué cuidar entre limpiezas. Consejos de Aquapress, tintorería en San Isidro.',
+        'desc': 'Cómo lavar un terno sin deformarlo y cada cuánto limpiarlo. Consejos de los expertos de Aquapress, tintorería en San Isidro.',
         'kw': 'cómo lavar un terno, lavar un terno, limpiar un terno, cada cuánto lavar un terno, tintorería de ternos, cuidado del terno',
         'img': 'saco-negro-colgado-terno', 'og': 'og-como-lavar-un-terno',
         'alt': 'Saco negro de terno con camisa colgado en la pared',
@@ -271,9 +271,9 @@ POSTS = [
     # ------------------------------------------------------------------ 6
     {
         'slug': 'como-lavar-cortinas',
-        'title': 'Cómo lavar cortinas y cada cuánto hacerlo | Aquapress',
+        'title': 'Cómo lavar cortinas sin arruinarlas ni encoger | Aquapress',
         'h1': 'Cómo lavar cortinas sin dañarlas',
-        'desc': 'Cómo lavar cortinas según su tela, cada cuánto limpiarlas y cuándo conviene traerlas a Aquapress, tu lavandería en San Isidro.',
+        'desc': 'Cómo lavar cortinas según su tela y cada cuánto limpiarlas. Evita errores y sabe cuándo llevarlas a Aquapress, en San Isidro.',
         'kw': 'cómo lavar cortinas, lavar cortinas, limpieza de cortinas, cada cuánto lavar cortinas, lavandería de cortinas',
         'img': 'cortinas-beige-alfombra-sala', 'og': 'og-como-lavar-cortinas',
         'alt': 'Cortinas de lino beige con tiras en la parte superior frente a una ventana luminosa, en una sala de tonos neutros',
@@ -318,9 +318,9 @@ POSTS = [
     # ------------------------------------------------------------------ 7
     {
         'slug': 'como-lavar-zapatillas',
-        'title': 'Cómo lavar zapatillas sin dañarlas | Aquapress',
+        'title': 'Lavar zapatillas: los errores que las arruinan | Aquapress',
         'h1': 'Cómo lavar zapatillas sin dañarlas',
-        'desc': 'Qué cuidar al limpiar zapatillas según su material, qué errores las dañan y cuándo conviene traerlas a Aquapress, en San Isidro.',
+        'desc': 'Cómo limpiar zapatillas según su material y qué errores las dañan. Aprende y, si prefieres, déjalas con Aquapress en San Isidro.',
         'kw': 'cómo lavar zapatillas, lavar zapatillas blancas, limpiar zapatillas, lavar zapatillas en lavadora, lavandería de zapatillas',
         'img': 'zapatillas-blancas-lona', 'og': 'og-como-lavar-zapatillas',
         'alt': 'Zapatillas blancas de lona sobre una tela blanca',

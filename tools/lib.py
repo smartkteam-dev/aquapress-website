@@ -8,7 +8,7 @@ TEL = '+51974726537'
 TEL_FMT = '+51 974 726 537'
 FB = 'https://www.facebook.com/AquaPressPeru/'
 MAPS = 'https://maps.app.goo.gl/ToATP6guWhEyAwJF9'
-OG_IMG = '/images/og-aquapress-lavanderia-tintoreria-san-isidro.png'
+OG_IMG = '/images/og-aquapress-lavanderia-san-isidro-cuadrado.png'
 OG_ALT = 'Aquapress Lavandería: lavandería y tintorería en San Isidro, Lima'
 TODAY = '2026-10-25'
 YEAR = '2026'
@@ -336,7 +336,7 @@ def page(path, title, desc, keywords, body, graph, og_image=OG_IMG, og_alt=OG_AL
     url = DOMAIN + (path if path != '/' else '/')
     ld = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, separators=(',', ':'))
     og_abs = DOMAIN + og_image if og_image.startswith('/') else og_image
-    ow, oh = (1200, 630) if og_image == OG_IMG else (1200, 630)
+    ow, oh = (1200, 1200) if og_image == OG_IMG else (1200, 630)
     html = f'''<!DOCTYPE html>
 <html lang="es-PE">
 <head>
