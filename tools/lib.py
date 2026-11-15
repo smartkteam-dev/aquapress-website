@@ -8,6 +8,8 @@ TEL = '+51974726537'
 TEL_FMT = '+51 974 726 537'
 FB = 'https://www.facebook.com/AquaPressPeru/'
 MAPS = 'https://maps.app.goo.gl/ToATP6guWhEyAwJF9'
+# Google Business Profile, canonical CID form (resolved from MAPS). Used in schema sameAs and llms.txt.
+GBP = 'https://www.google.com/maps?cid=8458508962373614333'
 OG_IMG = '/images/og-aquapress-lavanderia-san-isidro-cuadrado.png'
 OG_ALT = 'Aquapress Lavandería: lavandería y tintorería en San Isidro, Lima'
 TODAY = '2026-10-25'
@@ -165,7 +167,7 @@ def biz_node():
             {'@type': 'AdministrativeArea', 'name': 'Miraflores'},
             {'@type': 'City', 'name': 'Lima'},
         ],
-        'sameAs': [FB],
+        'sameAs': [GBP, FB],
         'serviceType': ['Lavado al peso', 'Lavado por prenda', 'Tintorería', 'Lavado al seco', 'Planchado', 'Lavado de edredones', 'Lavado de alfombras', 'Lavado de cortinas', 'Lavado de zapatillas', 'Lavado de vestidos de novia', 'Servicio express', 'Recojo a domicilio'],
     }
 

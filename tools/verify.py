@@ -67,6 +67,13 @@ locs=set(re.findall(r'<loc>https://www.aquapress.pe(.*?)</loc>',sm))
 want={u for u in exist if u!='/404'}
 locs={('/' if l=='/' else l) for l in locs}
 if locs!=want: errs.append(f'sitemap mismatch: {locs^want}')
+# llms.txt must link every sitemap page; llms-full.txt must carry the full text of every one
+llms=open(OUT+'/llms.txt').read(); full=open(OUT+'/llms-full.txt').read()
+for u in sorted(want):
+    url='https://www.aquapress.pe'+u
+    if u!='/blog' and f'({url})' not in llms: errs.append(f'llms.txt missing {u}')
+    if u!='/blog' and f'URL: {url}\n' not in full: errs.append(f'llms-full.txt missing {u}')
+if 'llms.txt' not in open(OUT+'/robots.txt').read(): errs.append('robots.txt does not point to llms.txt')
 print('pages:',len(pages)); print('\n'.join(errs) if errs else 'ALL CHECKS PASSED')
 if '--outline' in sys.argv:
     for u in ('/','/tintoreria-lavado-al-seco','/lavanderia-miraflores','/blog/cada-cuanto-lavar-un-edredon'):
