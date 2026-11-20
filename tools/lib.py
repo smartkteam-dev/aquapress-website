@@ -350,8 +350,6 @@ def page(path, title, desc, keywords, body, graph, og_image=OG_IMG, og_alt=OG_AL
   <meta name="author" content="Aquapress Lavandería" />
   <meta name="robots" content="{robots}" />
   <link rel="canonical" href="{url}" />
-  <link rel="alternate" hreflang="es-PE" href="{url}" />
-  <link rel="alternate" hreflang="x-default" href="{url}" />
   <meta name="theme-color" content="#00AEEF" />
   <meta name="geo.region" content="PE-LIM" />
   <meta name="geo.placename" content="San Isidro, Lima" />

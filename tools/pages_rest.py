@@ -12,9 +12,9 @@ def district(slug, name, kw_extra, hero_name, hero_alt, intro, area_p, who_title
     path = f'/lavanderia-{slug}'
     title = f'Recojo a domicilio de lavandería en {name} | Aquapress'
     desc = f'Recogemos tu ropa en {name} y te la devolvemos lista. Lavado al peso, tintorería y edredones desde San Isidro. Pide tu recojo por WhatsApp.'
-    kw = f'lavandería {name}, lavandería en {name}, tintorería {name}, recojo a domicilio {name}, lavandería a domicilio {name}, {kw_extra}'
-    trail = [('Inicio', '/'), (f'Lavandería en {name}', path)]
-    hero = page_hero(trail, f'Lavandería en {name} <em>con recojo a domicilio</em>', intro,
+    kw = f'lavandería a domicilio {name}, recojo a domicilio {name}, lavandería {name}, tintorería {name}, {kw_extra}'
+    trail = [('Inicio', '/'), (f'Lavandería a domicilio en {name}', path)]
+    hero = page_hero(trail, f'Lavandería a domicilio <em>en {name}</em>', intro,
                      img(hero_name, hero_alt, eager=True), wa_text, f'Atendemos {name}')
     body = f'''{hero}
 
@@ -241,6 +241,5 @@ def not_found():
                 'lavandería San Isidro', body, [biz_node()], robots='noindex, follow')
     # a 404 must not carry a self-canonical to a URL that does not exist
     html = re.sub(r'  <link rel="canonical"[^\n]*\n', '', html)
-    html = re.sub(r'  <link rel="alternate" hreflang[^\n]*\n', '', html)
     html = re.sub(r'  <meta property="og:url"[^\n]*\n', '', html)
     return '/404', html
