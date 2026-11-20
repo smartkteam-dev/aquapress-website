@@ -369,16 +369,11 @@ def tintoreria():
 </section>
 
 <section class="section sec-linen" id="prendas-especiales">
-  <div class="container">
-    <div class="section-head fade-up"><span class="tag">Ocasiones especiales</span><h2 class="h2">Vestidos de novia, de fiesta y prendas con pedrería</h2>
-    <p class="lead">Tu vestido de gala, traje de noche o prenda con pedrería merece el mejor cuidado profesional.</p></div>
-    <div class="grid-3">
-      {card('Vestidos de novia', 'Un vestido de novia es una prenda única. Lo revisamos con detalle antes de definir el tratamiento.', ['Vestidos de novia'], static=True)}
-      {card('Vestidos de noche y de fiesta', 'Telas finas y acabados delicados que requieren limpieza profesional.', ['Vestidos de noche', 'Vestidos de fiesta'], static=True, delay=.08)}
-      {card('Pedrería, sacones y poleras', 'Prendas con aplicaciones o tejidos especiales que necesitan atención individual.', ['Pedrería', 'Sacones', 'Poleras'], static=True, delay=.16)}
-    </div>
-    <p class="lead text-center fade-up" style="margin-top:28px;">Conoce el servicio completo de <a class="text-link" href="/lavado-de-vestidos-de-novia-y-fiesta">lavado de vestidos de novia y de fiesta</a>, o escríbenos por WhatsApp y te orientamos.</p>
-  </div>
+  <div class="container"><div class="prose fade-up">
+    <h2>¿Es un vestido de novia o de fiesta?</h2>
+    <p>Los vestidos de novia, de fiesta y de noche, igual que los sacones y poleras con pedrería o aplicaciones, también pasan por tintorería, pero cada uno recibe una revisión individual antes de definir el tratamiento.</p>
+    <p>Conoce el servicio completo de <a href="/lavado-de-vestidos-de-novia-y-fiesta">lavado de vestidos de novia y de fiesta</a>, o escríbenos por WhatsApp y te orientamos.</p>
+  </div></div>
 </section>
 
 <section class="section sec-white" id="lavado-al-seco-vs-agua">
@@ -411,7 +406,7 @@ def tintoreria():
         path,
         'Tintorería y lavado al seco en San Isidro | Aquapress',
         'Tintorería en San Isidro para abrigos, alpaca, cuero, gamuza y ternos. Cuidado experto y recojo a domicilio. Cotiza por WhatsApp.',
-        'tintorería San Isidro, lavado al seco, lavado en seco Lima, limpieza de vestidos de novia, lavar abrigos de alpaca, limpieza de cuero y gamuza',
+        'tintorería San Isidro, lavado al seco, lavado en seco Lima, lavar abrigos de alpaca, limpieza de cuero y gamuza',
         'Tintorería y lavado al seco <em>en San Isidro</em>',
         'Procesos especializados para prendas delicadas: abrigos, alpaca, cuero, gamuzas y vestidos de novia. Visítanos en San Isidro o coordina el recojo a domicilio.',
         'Tintorería en San Isidro',
@@ -530,10 +525,10 @@ def recojo():
 </section>'''
     return service_page(
         path,
-        'Lavandería con recojo a domicilio en San Isidro | Aquapress',
+        'Lavandería a domicilio: recojo y entrega | Aquapress',
         'Recogemos tu ropa en San Isidro, San Borja, Surquillo y Miraflores y te la devolvemos lista. Pide tu recojo a domicilio por WhatsApp.',
-        'lavandería con recojo a domicilio, lavandería a domicilio, recojo de ropa a domicilio, lavandería delivery San Isidro, lavandería a domicilio Miraflores',
-        'Lavandería con recojo a domicilio <em>en San Isidro, San Borja, Surquillo y Miraflores</em>',
+        'lavandería a domicilio, lavandería con recojo a domicilio, recojo de ropa a domicilio, lavandería delivery',
+        'Lavandería a domicilio <em>en San Isidro, San Borja, Surquillo y Miraflores</em>',
         'Si no puedes venir, coordinamos el recojo en tu casa u oficina y te devolvemos tus prendas limpias. Consulta disponibilidad por WhatsApp.',
         'Recojo y entrega',
         img('ropa-limpia-doblada-entrega-manos', 'Persona sosteniendo una pila de ropa limpia y doblada, lista para la entrega a domicilio', eager=True),

@@ -11,6 +11,43 @@ Blog posts live in `posts.py`. Blog photos are free Unsplash photos (no attribut
 
 Reviews on the home page are real Google reviews copied by hand in `pages_core.py` (home()).
 
+## Keyword map
+
+One primary keyword per page and no two pages on the same keyword (SEO standard, Advanced level). The primary keyword belongs in the page's title, H1, first paragraph and URL. Secondary keywords can appear in the copy. Before writing a new page or post, check this table: if its keyword is already taken, improve that page instead.
+
+Keywords are chosen from the services and how people in Lima search; there was no search-volume tool at the time. Check them against the Search Console queries (Performance → Queries) once there is data, and update this table when a page's focus changes.
+
+Intent: **local** = looking for a business nearby, **service** = ready to hire this service, **info** = wants to learn how to do it.
+
+| Page | Primary keyword | Intent | Secondary keywords |
+|---|---|---|---|
+| `/` | lavandería San Isidro | local | lavandería cerca de mí, Aquapress |
+| `/tintoreria-lavado-al-seco` | tintorería San Isidro | service | lavado al seco, abrigos de alpaca, cuero y gamuza |
+| `/lavado-al-peso-y-por-prenda` | lavado al peso San Isidro | service | lavado por prenda, planchado de camisas |
+| `/lavado-de-ternos-y-corbatas` | lavado de ternos | service | limpieza de corbatas, lavar saco |
+| `/lavado-de-edredones-y-ropa-de-cama` | lavado de edredones | service | frazadas, mantas, protectores de colchón |
+| `/lavado-de-alfombras-y-cortinas` | lavado de alfombras y cortinas | service | lavandería de cortinas, limpieza de alfombras |
+| `/lavado-de-zapatillas` | lavado de zapatillas | service | limpieza de zapatillas, zapatillas blancas |
+| `/lavado-de-vestidos-de-novia-y-fiesta` | lavado de vestido de novia | service | vestidos de fiesta, vestidos con pedrería |
+| `/recojo-a-domicilio-lavanderia` | lavandería a domicilio | service | recojo de ropa a domicilio, lavandería delivery |
+| `/lavanderia-miraflores` | lavandería a domicilio Miraflores | local | tintorería Miraflores |
+| `/lavanderia-san-borja` | lavandería a domicilio San Borja | local | tintorería San Borja |
+| `/lavanderia-surquillo` | lavandería a domicilio Surquillo | local | tintorería Surquillo |
+| `/blog` | consejos para cuidar la ropa | info | cuidado de prendas delicadas |
+| `/blog/como-lavar-chompa-de-alpaca` | cómo lavar una chompa de alpaca | info | lavar prendas de lana |
+| `/blog/guardar-ropa-de-invierno-antes-del-verano` | cómo guardar ropa de invierno | info | polillas en la ropa |
+| `/blog/que-es-el-lavado-en-seco` | qué es el lavado en seco | info | ropa dry clean only |
+| `/blog/cada-cuanto-lavar-un-edredon` | cada cuánto lavar un edredón | info | cómo lavar un edredón |
+| `/blog/como-lavar-un-terno` | cómo lavar un terno | info | cada cuánto lavar un terno |
+| `/blog/como-lavar-cortinas` | cómo lavar cortinas | info | cada cuánto lavar cortinas |
+| `/blog/como-lavar-zapatillas` | cómo lavar zapatillas | info | lavar zapatillas blancas en casa |
+
+Service page vs. blog post on the same subject (e.g. `lavado de ternos` vs. `cómo lavar un terno`) is not a conflict: one is for people ready to hire, the other for people learning, and Google ranks them separately. Each pair links to each other.
+
+Rules for this site:
+- Only the home page targets "lavandería San Isidro". Other pages may say "en San Isidro" as the location, but their primary keyword is the service.
+- District pages lead with the delivery service ("lavandería a domicilio {district}"), never "lavandería en {district}", because there is no shop there.
+
 ## Generated files: never edit them in the repo root
 
 Every file the build writes is overwritten on the next run, so a hand edit in the root is lost. Edit the source instead:
