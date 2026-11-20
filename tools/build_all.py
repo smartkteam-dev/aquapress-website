@@ -23,7 +23,7 @@ print('assets v', lib.ASSET_V, 'css', round(len(css)/1024,1), 'KB')
 import pages_new as new
 pages = [core.home(), core.lavado(), core.tintoreria(), core.edredones(), core.recojo(),
          new.alfombras(), new.zapatillas(), new.vestidos(), new.ternos(),
-         rest.san_borja(), rest.surquillo(), rest.miraflores(), rest.blog_index()]
+         rest.san_borja(), rest.surquillo(), rest.miraflores(), rest.blog_index(), rest.privacidad()]
 pages += [rest.post(p) for p in rest.POSTS]
 pages.append(rest.not_found())
 for path, html in pages:
@@ -36,6 +36,7 @@ for p,_ in SERVICES: prio[p]=('0.9','monthly')
 for p in ['/lavanderia-san-borja','/lavanderia-surquillo','/lavanderia-miraflores']: prio[p]=('0.8','monthly')
 prio['/blog']=('0.8','weekly')
 for q in rest.POSTS: prio['/blog/'+q['slug']]=('0.7','monthly')
+prio['/privacidad']=('0.3','yearly')
 urls=''.join(f'  <url>\n    <loc>{DOMAIN}{p if p!="/" else "/"}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n' for p,(pr,cf) in prio.items())
 open(OUT+'/sitemap.xml','w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 # robots.txt: everyone allowed, plus an explicit group naming the AI crawlers and assistants,

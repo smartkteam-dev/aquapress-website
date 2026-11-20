@@ -211,6 +211,10 @@ def build(pages, posts):
 - [Todas las guías del blog]({DOMAIN}/blog): {meta(by_path['/blog'], 'description')}
 {post_lines}
 
+## Otras páginas
+
+{line('/privacidad')}
+
 ## Texto completo
 
 - [llms-full.txt]({DOMAIN}/llms-full.txt): el texto completo de todas las páginas de servicios y de todas las guías del blog, en Markdown.
@@ -231,5 +235,6 @@ def build(pages, posts):
         path = f"/blog/{q['slug']}"
         head = f"*{q['section']} · {q['read']} min de lectura · Por Aquapress Lavandería*\n\n{q['summary']}\n\n"
         parts.append(f"# {q['h1']}\n\nURL: {DOMAIN}{path}\n\n{head}{html_to_md(q['body'])}")
+    parts.append(section('/privacidad', html_to_md(main_of(by_path['/privacidad']))))
     full = '\n\n---\n\n'.join(s.strip() for s in parts) + '\n'
     return index, full

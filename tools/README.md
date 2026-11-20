@@ -41,12 +41,20 @@ Intent: **local** = looking for a business nearby, **service** = ready to hire t
 | `/blog/como-lavar-un-terno` | cómo lavar un terno | info | cada cuánto lavar un terno |
 | `/blog/como-lavar-cortinas` | cómo lavar cortinas | info | cada cuánto lavar cortinas |
 | `/blog/como-lavar-zapatillas` | cómo lavar zapatillas | info | lavar zapatillas blancas en casa |
+| `/privacidad` | none (legal page, linked from every footer) | — | — |
 
 Service page vs. blog post on the same subject (e.g. `lavado de ternos` vs. `cómo lavar un terno`) is not a conflict: one is for people ready to hire, the other for people learning, and Google ranks them separately. Each pair links to each other.
 
 Rules for this site:
 - Only the home page targets "lavandería San Isidro". Other pages may say "en San Isidro" as the location, but their primary keyword is the service.
 - District pages lead with the delivery service ("lavandería a domicilio {district}"), never "lavandería en {district}", because there is no shop there.
+
+## Google Analytics and the privacy page
+
+- The Google tag (`GTAG_ID` / `GTAG_HTML` in `lib.py`) is in every page's head. It loads 2.5 s after the page loads, or at the first scroll/tap/key press, so it doesn't slow the first screen on phones. Visits under ~2.5 s with no interaction aren't counted.
+- Click events are sent from `main.js`: `whatsapp_click` and `phone_click` (key events in GA4: these are the leads), `directions_click` (Google Maps links) and `email_click`. Keep the names: GA4 key events match them exactly.
+- `verify.py` fails if a page is missing the tag (or has it twice) or if an event name disappears from `main.js`.
+- `/privacidad` (`privacidad()` in `pages_rest.py`) describes what Analytics collects and keeps (14 months, set in GA4 Admin → Data retention). If tracking, retention or contact details change, update that page too.
 
 ## Generated files: never edit them in the repo root
 

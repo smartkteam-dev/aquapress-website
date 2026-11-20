@@ -228,6 +228,48 @@ def blog_index():
     return path, page(path, title, desc, kw, body, graph)
 
 
+def privacidad():
+    """Privacy page, required by the SEO standard once Google Analytics is on the site.
+    Keep it in sync with GTAG_HTML (lib.py), the click events in main.js and the GA4 data retention (14 months)."""
+    path = '/privacidad'
+    trail = [('Inicio', '/'), ('Política de privacidad', path)]
+    wa_link = wa('Hola, quisiera consultar sobre mis datos personales')
+    inner = f'''
+    <p><em>Actualizada el 19 de noviembre de 2026. Responsable: Aquapress Lavandería, Av. del Parque Sur 193, San Isidro, Lima.</em></p>
+
+    <h2>WhatsApp y teléfono</h2>
+    <p>Este sitio no tiene formularios. Si nos escribes o llamas, usamos tu nombre, número y dirección solo para atender tu pedido y coordinar el recojo. No vendemos tus datos. WhatsApp (Meta) tiene su propia política de privacidad.</p>
+
+    <h2>Google Analytics</h2>
+    <p>Para mejorar el sitio, Google Analytics registra qué páginas se visitan, cómo llegaste, tu ciudad aproximada, tu dispositivo y si tocaste WhatsApp, llamar o el mapa. No identifica quién eres. Usa cookies y guardamos los datos hasta 14 meses. Puedes <a href="https://tools.google.com/dlpage/gaoptout?hl=es" target="_blank" rel="noopener noreferrer">desactivar Google Analytics</a> en tu navegador.</p>
+
+    <h2>Otros servicios</h2>
+    <p>El mapa de la página principal es de Google Maps y puede usar sus propias cookies. El sitio está alojado en Vercel, que procesa datos técnicos como la dirección IP para mostrar las páginas.</p>
+
+    <h2>Tus derechos</h2>
+    <p>Puedes pedirnos ver, corregir o borrar tus datos (Ley N.° 29733) por <a href="{wa_link}" target="_blank" rel="noopener noreferrer">WhatsApp</a> o al <a href="tel:{TEL}">{TEL_FMT}</a>.</p>'''
+    body = f'''{crumbs_html(trail)}
+<section class="page-hero" style="padding-bottom:40px;">
+  <div class="container">
+    <div class="article-head" style="max-width:820px;margin-left:0;">
+      <h1>Política de privacidad</h1>
+      <p class="lead">Qué datos recogemos en este sitio y por WhatsApp, para qué los usamos y cómo pedir que los borremos.</p>
+    </div>
+  </div>
+</section>
+{prose_section(inner)}'''
+    title = 'Política de privacidad | Aquapress Lavandería'
+    desc = 'Cómo Aquapress usa las estadísticas de Google Analytics y los datos que nos das por WhatsApp, y cómo pedir que los borremos. Escríbenos.'
+    kw = 'política de privacidad Aquapress, protección de datos personales'
+    graph = [
+        biz_node(),
+        {'@type': 'WebPage', '@id': DOMAIN + path + '#pagina', 'url': DOMAIN + path, 'name': title, 'inLanguage': 'es-PE',
+         'about': {'@id': DOMAIN + '/#negocio'}},
+        breadcrumb_node(trail),
+    ]
+    return path, page(path, title, desc, kw, body, graph)
+
+
 def not_found():
     body = f'''<section class="page-hero" style="padding:calc(var(--nav-h) + 80px) 0 100px;">
   <div class="container text-center">

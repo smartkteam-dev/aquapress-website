@@ -6,6 +6,10 @@ def url_of(f):
     r=os.path.relpath(f,OUT)[:-5]
     return '/' if r=='index' else '/'+r
 exist={url_of(f) for f in files}
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from lib import GTAG_ID
+_js=open(OUT+'/assets/main.js').read()
+missing_ev=[e for e in ('whatsapp_click','phone_click','directions_click') if e not in _js]
 class P(HTMLParser):
     def __init__(s):
         super().__init__(); s.h=[]; s.imgs=[]; s.links=[]; s.ids=set(); s._cur=None; s.title='';s.in_title=False; s.meta={}; s.canon=None; s.ld=[]; s.in_ld=False
@@ -27,7 +31,7 @@ class P(HTMLParser):
         if s._cur is not None: s._cur[1]+=d
         if s.in_title: s.title+=d
         if s.in_ld: s.ld[-1]+=d
-errs=[]; titles={}; descs={}; kws={}
+errs=[f'assets/main.js: Analytics event {e} missing' for e in missing_ev]; titles={}; descs={}; kws={}
 pages={}
 for f in sorted(files):
     u=url_of(f); p=P(); p.feed(open(f).read()); pages[u]=p
@@ -50,6 +54,10 @@ for u,p in pages.items():
         path=path or u
         if path not in exist and not os.path.exists(OUT+path): errs.append(f'{u}: broken link {l}')
         elif frag and path in pages and frag not in pages[path].ids: errs.append(f'{u}: missing anchor {l}')
+    # Google Analytics: every page (404 included) loads the Google tag once, and main.js for the click events
+    raw=open(OUT+('/index' if u=='/' else u)+'.html').read()
+    if raw.count(f"googletagmanager.com/gtm.js?id={GTAG_ID}")!=1: errs.append(f'{u}: Google tag {GTAG_ID} missing or duplicated')
+    if '/assets/main.js?v=' not in raw: errs.append(f'{u}: main.js (Analytics click events) missing')
     for b in p.ld:
         try: json.loads(b)
         except Exception as e: errs.append(f'{u}: bad jsonld {e}')

@@ -2076,3 +2076,29 @@ Si prefieres no moverte, consulta el [recojo a domicilio](https://www.aquapress.
 ## Y el resto de tu ropa deportiva
 
 Lleva también tu ropa de entrenamiento: con el [lavado al peso](https://www.aquapress.pe/lavado-al-peso-y-por-prenda) (mínimo 2 kg) la lavas junto con el resto de tu ropa.
+
+---
+
+# Política de privacidad
+
+URL: https://www.aquapress.pe/privacidad
+
+Qué datos recogemos en este sitio y por WhatsApp, para qué los usamos y cómo pedir que los borremos.
+
+*Actualizada el 19 de noviembre de 2026. Responsable: Aquapress Lavandería, Av. del Parque Sur 193, San Isidro, Lima.*
+
+## WhatsApp y teléfono
+
+Este sitio no tiene formularios. Si nos escribes o llamas, usamos tu nombre, número y dirección solo para atender tu pedido y coordinar el recojo. No vendemos tus datos. WhatsApp (Meta) tiene su propia política de privacidad.
+
+## Google Analytics
+
+Para mejorar el sitio, Google Analytics registra qué páginas se visitan, cómo llegaste, tu ciudad aproximada, tu dispositivo y si tocaste WhatsApp, llamar o el mapa. No identifica quién eres. Usa cookies y guardamos los datos hasta 14 meses. Puedes [desactivar Google Analytics](https://tools.google.com/dlpage/gaoptout?hl=es) en tu navegador.
+
+## Otros servicios
+
+El mapa de la página principal es de Google Maps y puede usar sus propias cookies. El sitio está alojado en Vercel, que procesa datos técnicos como la dirección IP para mostrar las páginas.
+
+## Tus derechos
+
+Puedes pedirnos ver, corregir o borrar tus datos (Ley N.° 29733) por [WhatsApp](https://wa.me/51974726537?text=Hola%2C%20quisiera%20consultar%20sobre%20mis%20datos%20personales) o al [+51 974 726 537](tel:+51974726537).

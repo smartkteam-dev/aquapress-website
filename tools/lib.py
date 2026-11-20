@@ -15,6 +15,32 @@ OG_ALT = 'Aquapress Lavandería: lavandería y tintorería en San Isidro, Lima'
 TODAY = '2026-10-25'
 YEAR = '2026'
 ASSET_V = ''  # set by build_all (content hash of CSS/JS)
+# Google tag for Google Analytics (GA4), created from the Aquapress GA4 web stream (Install manually).
+# It forwards to the GA4 property. Click events (whatsapp_click, phone_click...) are sent from main.js.
+GTAG_ID = 'GTM-NW2FKCJV'
+# Loaded 2.5 s after the page's load event, or at the visitor's first scroll, tap or key press if
+# that comes sooner, so its ~180 KB doesn't compete with the first screen (LCP) on phones.
+# gtag() calls made before that wait in dataLayer and are sent once the tag loads.
+GTAG_HTML = f'''  <!-- Google tag (Google Analytics), {GTAG_ID}: loads after the page, see GTAG_HTML in tools/lib.py -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    (function () {{
+      var done = false, events = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+      function loadTag() {{
+        if (done) return;
+        done = true;
+        events.forEach(function (e) {{ window.removeEventListener(e, loadTag); }});
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id={GTAG_ID}';
+        document.head.appendChild(s);
+      }}
+      events.forEach(function (e) {{ window.addEventListener(e, loadTag, {{ once: true, passive: true }}); }});
+      window.addEventListener('load', function () {{ setTimeout(loadTag, 2500); }});
+    }})();
+  </script>'''
 
 WA_ICON = open(os.path.join(HERE, 'wa_icon.svg')).read()
 WA_FLOAT_SVG = open(os.path.join(HERE, 'wa_float.snippet')).read()
@@ -301,7 +327,7 @@ def footer_html():
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {YEAR} Aquapress Lavandería. Todos los derechos reservados.</p>
+      <p>&copy; {YEAR} Aquapress Lavandería. Todos los derechos reservados. · <a href="/privacidad" class="credit-link">Política de privacidad</a></p>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end;">
         <p style="font-size:.88rem;color:rgba(255,255,255,.5);">San Isidro, Lima, Perú</p>
         <p style="color:rgba(255,255,255,.2);">|</p>
@@ -379,6 +405,7 @@ def page(path, title, desc, keywords, body, graph, og_image=OG_IMG, og_alt=OG_AL
   <meta name="twitter:image:alt" content="{og_alt}" />{extra_head}
   <script type="application/ld+json">{ld}</script>
   <script>document.documentElement.className+=' js'</script>
+{GTAG_HTML}
   <link rel="preload" href="/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/styles.css?v={ASSET_V}" />
