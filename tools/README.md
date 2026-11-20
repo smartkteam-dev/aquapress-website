@@ -66,6 +66,9 @@ Every file the build writes is overwritten on the next run, so a hand edit in th
 | `robots.txt` | `AI_BOTS` list and robots block in `build_all.py` |
 | `llms.txt`, `llms-full.txt` | `llms.py` (intro, business facts, blog note); service/post text comes from the page copy automatically |
 | `sitemap.xml`, `vercel.json`, `site.webmanifest` | `build_all.py` |
+| `tools/lastmod.json` | nothing: the build writes it (see below). Commit it with the pages; the pre-commit hook checks it |
+
+**Sitemap dates.** Each page's `<lastmod>` is the date its visible text last changed, not the build date. `build_all.py` stores a fingerprint of each page's `<main>` text plus a date in `tools/lastmod.json`. A page gets today's date only when its fingerprint changes, so changes to the head, footer, Analytics tag or CSS classes don't move it, and rebuilding on a later day changes nothing. Google only trusts `lastmod` when it tracks real content changes. The blog posts' publish date is a separate constant, `PUBLISHED` in `lib.py`.
 
 ## AI assistants (llms.txt, robots.txt, sameAs)
 

@@ -10,7 +10,7 @@
 
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
-GENERATED='*.html blog/*.html assets/styles.css assets/main.js sitemap.xml robots.txt llms.txt llms-full.txt site.webmanifest vercel.json'
+GENERATED='*.html blog/*.html assets/styles.css assets/main.js sitemap.xml robots.txt llms.txt llms-full.txt site.webmanifest vercel.json tools/lastmod.json'
 
 # Only run when the commit touches the generator or a generated file (docs-only commits skip it).
 staged=$(git diff --cached --name-only --diff-filter=ACMRD)

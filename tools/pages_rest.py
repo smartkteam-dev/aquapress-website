@@ -151,7 +151,7 @@ def post(p):
   <header class="container article-head" style="max-width:820px;">
     <span class="tag">{p['section']}</span>
     <h1>{p['h1']}</h1>
-    <p class="post-meta">Por Aquapress Lavandería · <time datetime="{TODAY}">25 de octubre de 2026</time> · {p['read']} min de lectura</p>
+    <p class="post-meta">Por Aquapress Lavandería · <time datetime="{PUBLISHED}">25 de octubre de 2026</time> · {p['read']} min de lectura</p>
   </header>
   <div class="container"><div class="post-hero-img">{img(p['img'], p['alt'], eager=True, ctx='post', big=True)}</div></div>
   <section class="section sec-white" style="padding-top:56px;">
@@ -176,8 +176,8 @@ def post(p):
         'headline': p['h1'],
         'description': p['desc'],
         'image': [f"{DOMAIN}/images/{p['og']}.jpg"],
-        'datePublished': TODAY,
-        'dateModified': TODAY,
+        'datePublished': PUBLISHED,
+        'dateModified': PUBLISHED,
         'inLanguage': 'es-PE',
         'author': {'@type': 'Organization', 'name': 'Aquapress Lavandería', 'url': DOMAIN + '/'},
         'publisher': {'@id': DOMAIN + '/#negocio'},
@@ -187,8 +187,8 @@ def post(p):
     }
     graph = [biz_node(), article, breadcrumb_node(trail)]
     extra = f'''
-  <meta property="article:published_time" content="{TODAY}" />
-  <meta property="article:modified_time" content="{TODAY}" />
+  <meta property="article:published_time" content="{PUBLISHED}" />
+  <meta property="article:modified_time" content="{PUBLISHED}" />
   <meta property="article:section" content="{p['section']}" />'''
     html = page(path, p['title'], p['desc'], p['kw'], body, graph, og_image=f"/images/{p['og']}.jpg",
                 og_alt=p['alt'], og_type='article', extra_head=extra)
@@ -222,7 +222,7 @@ def blog_index():
         biz_node(),
         {'@type': 'Blog', '@id': DOMAIN + '/blog#blog', 'url': DOMAIN + '/blog', 'name': 'Blog de Aquapress Lavandería', 'inLanguage': 'es-PE',
          'publisher': {'@id': DOMAIN + '/#negocio'},
-         'blogPost': [{'@type': 'BlogPosting', 'headline': q['h1'], 'url': f"{DOMAIN}/blog/{q['slug']}", 'datePublished': TODAY} for q in POSTS]},
+         'blogPost': [{'@type': 'BlogPosting', 'headline': q['h1'], 'url': f"{DOMAIN}/blog/{q['slug']}", 'datePublished': PUBLISHED} for q in POSTS]},
         breadcrumb_node(trail),
     ]
     return path, page(path, title, desc, kw, body, graph)
