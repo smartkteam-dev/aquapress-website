@@ -37,7 +37,22 @@ for p in ['/lavanderia-san-borja','/lavanderia-surquillo','/lavanderia-miraflore
 prio['/blog']=('0.8','weekly')
 for q in rest.POSTS: prio['/blog/'+q['slug']]=('0.7','monthly')
 prio['/privacidad']=('0.3','yearly')
-urls=''.join(f'  <url>\n    <loc>{DOMAIN}{p if p!="/" else "/"}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n' for p,(pr,cf) in prio.items())
+# <lastmod> = the date each page's visible text last changed. tools/lastmod.json keeps a fingerprint
+# (main_text_hash) and a date per page; a page gets today's date only when its fingerprint changes, so
+# rebuilding on another day, or editing the head/footer/tag, leaves the dates alone. The pre-commit
+# hook treats lastmod.json as a generated file: commit it with the pages.
+import datetime
+LASTMOD_FILE = os.path.join(HERE, 'lastmod.json')
+_old = json.load(open(LASTMOD_FILE)) if os.path.exists(LASTMOD_FILE) else {}
+_today = datetime.date.today().isoformat()
+lastmod = {}
+for path, html in pages:
+    if path == '/404': continue
+    h = main_text_hash(html)
+    prev = _old.get(path)
+    lastmod[path] = {'hash': h, 'date': prev['date'] if prev and prev['hash'] == h else _today}
+open(LASTMOD_FILE, 'w').write(json.dumps(lastmod, indent=1, sort_keys=True, ensure_ascii=False) + '\n')
+urls=''.join(f'  <url>\n    <loc>{DOMAIN}{p if p!="/" else "/"}</loc>\n    <lastmod>{lastmod[p]["date"]}</lastmod>\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n' for p,(pr,cf) in prio.items())
 open(OUT+'/sitemap.xml','w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 # robots.txt: everyone allowed, plus an explicit group naming the AI crawlers and assistants,
 # so allowing them is a stated choice, not an accident of the wildcard. To block one, give it

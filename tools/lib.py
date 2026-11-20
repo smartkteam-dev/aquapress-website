@@ -12,8 +12,22 @@ MAPS = 'https://maps.app.goo.gl/ToATP6guWhEyAwJF9'
 GBP = 'https://www.google.com/maps?cid=8458508962373614333'
 OG_IMG = '/images/og-aquapress-lavanderia-san-isidro-cuadrado.png'
 OG_ALT = 'Aquapress Lavandería: lavandería y tintorería en San Isidro, Lima'
-TODAY = '2026-10-25'
+# Publish date of the blog posts (datePublished, article:published_time, the date shown on each post).
+# The sitemap's <lastmod> is NOT this: it comes from tools/lastmod.json (see main_text_hash below).
+PUBLISHED = '2026-10-25'
 YEAR = '2026'
+
+
+def main_text_hash(html):
+    """Fingerprint of a page's visible <main> text. build_all stores it in tools/lastmod.json and gives a
+    page a new sitemap <lastmod> date only when it changes, so edits to the head, footer, Analytics tag
+    or markup alone don't move the date (Google trusts lastmod only if it tracks real content changes)."""
+    import hashlib, re as _re
+    from html import unescape
+    m = _re.search(r'<main[^>]*>(.*?)</main>', html, _re.S)
+    body = _re.sub(r'<(script|style)\b.*?</\1>', ' ', m.group(1) if m else html, flags=_re.S)
+    text = ' '.join(unescape(_re.sub(r'<[^>]+>', ' ', body)).split())
+    return hashlib.sha1(text.encode()).hexdigest()[:12]
 ASSET_V = ''  # set by build_all (content hash of CSS/JS)
 # Google tag for Google Analytics (GA4), created from the Aquapress GA4 web stream (Install manually).
 # It forwards to the GA4 property. Click events (whatsapp_click, phone_click...) are sent from main.js.
