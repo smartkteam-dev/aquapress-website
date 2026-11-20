@@ -26,6 +26,18 @@
       else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}
     });
   }
+  // Google Analytics click events (the Google tag itself is GTAG_HTML in tools/lib.py).
+  // Mark whatsapp_click and phone_click as key events in GA4: they are this site's leads.
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;
+    if(!a||typeof window.gtag!=='function')return;
+    var href=a.getAttribute('href')||'',name=null;
+    if(/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href))name='whatsapp_click';
+    else if(href.indexOf('tel:')===0)name='phone_click';
+    else if(href.indexOf('mailto:')===0)name='email_click';
+    else if(/^https:\/\/(maps\.app\.goo\.gl|(www\.)?google\.[a-z.]+\/maps)/.test(href))name='directions_click';
+    if(name)window.gtag('event',name,{link_url:href,link_text:(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,80),page_path:location.pathname});
+  });
   var items=document.querySelectorAll('.fade-up');
   if('IntersectionObserver' in window){
     var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});

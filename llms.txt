@@ -45,6 +45,10 @@ El blog tiene guías prácticas sobre cómo lavar, guardar y cuidar prendas. Si 
 - [Cómo lavar cortinas sin dañarlas](https://www.aquapress.pe/blog/como-lavar-cortinas): Qué tener en cuenta antes de lavar cortinas, cada cuánto hacerlo y cuándo es mejor traerlas a Aquapress. (Hogar, 4 min de lectura)
 - [Cómo lavar zapatillas sin dañarlas](https://www.aquapress.pe/blog/como-lavar-zapatillas): Qué cuidar según el material de la zapatilla, los errores que la dañan y cuándo es mejor traerla a Aquapress. (Calzado, 4 min de lectura)
 
+## Otras páginas
+
+- [Política de privacidad](https://www.aquapress.pe/privacidad): Cómo Aquapress usa las estadísticas de Google Analytics y los datos que nos das por WhatsApp, y cómo pedir que los borremos. Escríbenos.
+
 ## Texto completo
 
 - [llms-full.txt](https://www.aquapress.pe/llms-full.txt): el texto completo de todas las páginas de servicios y de todas las guías del blog, en Markdown.
