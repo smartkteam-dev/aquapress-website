@@ -29,10 +29,10 @@ if ! python3 tools/build_all.py > /dev/null; then
   exit 1
 fi
 
-out=$(python3 tools/verify.py)
+out=$(python3 tools/check-seo.py)
 if ! printf '%s\n' "$out" | grep -q 'ALL CHECKS PASSED'; then
   printf '%s\n' "$out" >&2
-  echo "pre-commit: verify.py found problems (listed above). Commit blocked." >&2
+  echo "pre-commit: check-seo.py found problems (listed above). Commit blocked." >&2
   exit 1
 fi
 

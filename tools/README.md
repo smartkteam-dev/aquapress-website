@@ -3,7 +3,7 @@
 The HTML pages in the repo root are generated. To change content, edit `pages_core.py` / `pages_rest.py` (copy), `lib.py` (nav, footer, schema, meta) or `base.css` / `extra.css` (styles), then:
 
     python3 tools/build_all.py   # rewrites the .html files, assets/styles.css, sitemap.xml, robots.txt, llms.txt, llms-full.txt, site.webmanifest, vercel.json
-    python3 tools/verify.py      # SEO checks: one H1, alt text, canonicals, unique titles, sitemap, links
+    python3 tools/check-seo.py      # SEO checks: one H1, alt text, canonicals, unique titles, sitemap, links
 
 To add a blog post, append an entry to `POSTS` in `pages_rest.py`. The sitemap and blog index update automatically. `tools/` is excluded from deploys via `.vercelignore`.
 
@@ -53,7 +53,7 @@ Rules for this site:
 
 - The Google tag (`GTAG_ID` / `GTAG_HTML` in `lib.py`) is in every page's head. It loads 2.5 s after the page loads, or at the first scroll/tap/key press, so it doesn't slow the first screen on phones. Visits under ~2.5 s with no interaction aren't counted.
 - Click events are sent from `main.js`: `whatsapp_click` and `phone_click` (key events in GA4: these are the leads), `directions_click` (Google Maps links) and `email_click`. Keep the names: GA4 key events match them exactly.
-- `verify.py` fails if a page is missing the tag (or has it twice) or if an event name disappears from `main.js`.
+- `check-seo.py` fails if a page is missing the tag (or has it twice) or if an event name disappears from `main.js`.
 - `/privacidad` (`privacidad()` in `pages_rest.py`) describes what Analytics collects and keeps (14 months, set in GA4 Admin → Data retention). If tracking, retention or contact details change, update that page too.
 
 ## Generated files: never edit them in the repo root
@@ -73,13 +73,13 @@ Every file the build writes is overwritten on the next run, so a hand edit in th
 ## AI assistants (llms.txt, robots.txt, sameAs)
 
 - `llms.txt` is a short Markdown index for AI assistants (https://llmstxt.org): business facts, every service, the district pages and every blog guide with its summary. `llms-full.txt` holds the full text of every page and blog post in Markdown, with WhatsApp links kept, so an assistant can answer a care question from a guide and link back to it.
-- Both are built from the rendered pages and `POSTS`, so a new blog post or service shows up in them with no extra step. `verify.py` fails if any sitemap page is missing from either file.
+- Both are built from the rendered pages and `POSTS`, so a new blog post or service shows up in them with no extra step. `check-seo.py` fails if any sitemap page is missing from either file.
 - `robots.txt` allows everyone and names the main AI crawlers in an explicit allow group. To block one, give it its own `User-agent` group with `Disallow: /` in `build_all.py`.
 - The business schema's `sameAs` lists the Google Business Profile (`GBP` in `lib.py`, canonical `?cid=` form of the `MAPS` short link) and Facebook. Add Instagram/TikTok there when they exist.
 
 ## Pre-commit hook (blocks stale builds)
 
-Vercel publishes the root files as committed and never runs the build, so `tools/hooks/pre-commit` runs it for you. When a commit touches `tools/` or a generated file, the hook rebuilds the site, runs `verify.py`, and blocks the commit if a check fails or if the rebuilt files aren't staged. Commits that only touch docs skip it.
+Vercel publishes the root files as committed and never runs the build, so `tools/hooks/pre-commit` runs it for you. When a commit touches `tools/` or a generated file, the hook rebuilds the site, runs `check-seo.py`, and blocks the commit if a check fails or if the rebuilt files aren't staged. Commits that only touch docs skip it.
 
 Enable it once per clone (it's already enabled in the main working copy):
 

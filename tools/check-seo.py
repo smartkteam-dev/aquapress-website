@@ -31,7 +31,7 @@ class P(HTMLParser):
         if s._cur is not None: s._cur[1]+=d
         if s.in_title: s.title+=d
         if s.in_ld: s.ld[-1]+=d
-errs=[f'assets/main.js: Analytics event {e} missing' for e in missing_ev]; titles={}; descs={}; kws={}
+errs=[f'assets/main.js: Analytics event {e} missing' for e in missing_ev]; titles={}; descs={}; kws={}; closing={}
 pages={}
 for f in sorted(files):
     u=url_of(f); p=P(); p.feed(open(f).read()); pages[u]=p
@@ -65,16 +65,33 @@ for u,p in pages.items():
         exp='https://www.aquapress.pe'+('/' if u=='/' else u)
         if p.canon!=exp: errs.append(f'{u}: canonical {p.canon} != {exp}')
         titles.setdefault(p.title,[]).append(u); descs.setdefault(p.meta.get('description'),[]).append(u); kws.setdefault(p.meta.get('keywords'),[]).append(u)
-        if len(p.title)>60: errs.append(f'{u}: title {len(p.title)}')
-        if len(p.meta.get('description',''))>155: errs.append(f'{u}: desc {len(p.meta["description"])}')
+        if not (30<=len(p.title)<=60): errs.append(f'{u}: title {len(p.title)} chars (want 30-60)')
+        desc=p.meta.get('description','')
+        if not (120<=len(desc)<=155): errs.append(f'{u}: desc {len(desc)} chars (want 120-155)')
+        # Templated metadata: a description that opens by repeating the title verbatim, or that
+        # ends on the exact same stock phrase as another page's description, is one generated
+        # shape site-wide even though each string is unique. Flag it; a shared closing CTA phrase
+        # written deliberately for the brand (e.g. "por WhatsApp") is fine, an identical trailing
+        # sentence copy-pasted across pages is not.
+        if desc and p.title and desc.startswith(p.title): errs.append(f'{u}: description opens with the title verbatim')
+        last_sentence=desc.rstrip('.').rsplit('.',1)[-1].strip()
+        if last_sentence: closing.setdefault(last_sentence,[]).append(u)
 for name,d in (('title',titles),('desc',descs),('keywords',kws)):
     for k,v in d.items():
         if len(v)>1: errs.append(f'duplicate {name}: {v}')
+for closing_phrase,v in closing.items():
+    if len(v)>3: errs.append(f'templated description: {len(v)} pages end on the identical sentence "{closing_phrase}" ({v})')
 sm=open(OUT+'/sitemap.xml').read()
 locs=set(re.findall(r'<loc>https://www.aquapress.pe(.*?)</loc>',sm))
 want={u for u in exist if u!='/404'}
 locs={('/' if l=='/' else l) for l in locs}
 if locs!=want: errs.append(f'sitemap mismatch: {locs^want}')
+if '<priority>' in sm or '<changefreq>' in sm: errs.append('sitemap.xml: <priority>/<changefreq> present; Google ignores both, remove them')
+redirect_sources={r['source'] for r in json.load(open(OUT+'/vercel.json')).get('redirects',[])}
+for src in redirect_sources:
+    src_path='/'+src.lstrip('/')
+    if src_path.endswith('.html'): src_path=src_path[:-5]
+    if src_path in locs: errs.append(f'sitemap.xml: {src_path} is a redirect source and should not be in the sitemap')
 # llms.txt must link every sitemap page; llms-full.txt must carry the full text of every one
 llms=open(OUT+'/llms.txt').read(); full=open(OUT+'/llms-full.txt').read()
 for u in sorted(want):
