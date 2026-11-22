@@ -30,13 +30,14 @@ for path, html in pages:
     fp = write(path, html)
     print(f'{path:55s} {len(html)/1024:6.1f} KB')
 
-# sitemap (404 excluded)
-prio = {'/':('1.0','weekly')}
-for p,_ in SERVICES: prio[p]=('0.9','monthly')
-for p in ['/lavanderia-san-borja','/lavanderia-surquillo','/lavanderia-miraflores']: prio[p]=('0.8','monthly')
-prio['/blog']=('0.8','weekly')
-for q in rest.POSTS: prio['/blog/'+q['slug']]=('0.7','monthly')
-prio['/privacidad']=('0.3','yearly')
+# sitemap (404 excluded). No <priority>/<changefreq>: Google ignores both, so the
+# generator only tracks which paths belong in the sitemap, not a priority/frequency per path.
+prio = {'/':True}
+for p,_ in SERVICES: prio[p]=True
+for p in ['/lavanderia-san-borja','/lavanderia-surquillo','/lavanderia-miraflores']: prio[p]=True
+prio['/blog']=True
+for q in rest.POSTS: prio['/blog/'+q['slug']]=True
+prio['/privacidad']=True
 # <lastmod> = the date each page's visible text last changed. tools/lastmod.json keeps a fingerprint
 # (main_text_hash) and a date per page; a page gets today's date only when its fingerprint changes, so
 # rebuilding on another day, or editing the head/footer/tag, leaves the dates alone. The pre-commit
@@ -52,7 +53,7 @@ for path, html in pages:
     prev = _old.get(path)
     lastmod[path] = {'hash': h, 'date': prev['date'] if prev and prev['hash'] == h else _today}
 open(LASTMOD_FILE, 'w').write(json.dumps(lastmod, indent=1, sort_keys=True, ensure_ascii=False) + '\n')
-urls=''.join(f'  <url>\n    <loc>{DOMAIN}{p if p!="/" else "/"}</loc>\n    <lastmod>{lastmod[p]["date"]}</lastmod>\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n' for p,(pr,cf) in prio.items())
+urls=''.join(f'  <url>\n    <loc>{DOMAIN}{p if p!="/" else "/"}</loc>\n    <lastmod>{lastmod[p]["date"]}</lastmod>\n  </url>\n' for p in prio)
 open(OUT+'/sitemap.xml','w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 # robots.txt: everyone allowed, plus an explicit group naming the AI crawlers and assistants,
 # so allowing them is a stated choice, not an accident of the wildcard. To block one, give it

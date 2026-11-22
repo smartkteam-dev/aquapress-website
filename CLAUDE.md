@@ -9,16 +9,16 @@ Every `.html` page, `blog/*.html`, `assets/styles.css`, `assets/main.js`, `sitem
 ## After ANY change in tools/, rebuild and verify before committing
 
     python3 tools/build_all.py
-    python3 tools/verify.py      # must print ALL CHECKS PASSED
+    python3 tools/check-seo.py      # must print ALL CHECKS PASSED
 
 Vercel has no build step: it publishes the root files exactly as committed, and `.vercelignore` keeps `tools/` out of the deploy. If you skip the build, the edit never reaches the live site. Commit the source change and the rebuilt files together.
 
-The pre-commit hook in `tools/hooks/pre-commit` enforces this. It rebuilds, runs `verify.py`, and blocks the commit if a check fails or if the rebuilt files aren't staged. Git hooks aren't stored in the repo, so each new clone enables it once with `git config core.hooksPath tools/hooks`. Use `--no-verify` only if the user asks.
+The pre-commit hook in `tools/hooks/pre-commit` enforces this. It rebuilds, runs `check-seo.py`, and blocks the commit if a check fails or if the rebuilt files aren't staged. Git hooks aren't stored in the repo, so each new clone enables it once with `git config core.hooksPath tools/hooks`. Use `--no-verify` only if the user asks.
 
 ## Where things go
 
 - Blog posts: append to `POSTS` in `tools/posts.py`. The blog index, sitemap, `llms.txt` and `llms-full.txt` all update from it.
-- New service page: the page function goes in `tools/pages_new.py` and in the `pages` list in `tools/build_all.py`, plus an entry in `SERVICES` in `tools/lib.py`. Without the `SERVICES` entry, `verify.py` fails because the page is missing from the llms files.
+- New service page: the page function goes in `tools/pages_new.py` and in the `pages` list in `tools/build_all.py`, plus an entry in `SERVICES` in `tools/lib.py`. Without the `SERVICES` entry, `check-seo.py` fails because the page is missing from the llms files.
 - New district page: add it to `DISTRICTS` in `tools/lib.py`.
 - Business facts (address, hours, phone, payment methods, Google profile, founding year): `tools/lib.py`. The facts block at the top of the llms files is in `tools/llms.py`; if hours or payment methods change, update both.
 
